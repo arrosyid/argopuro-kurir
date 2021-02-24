@@ -16,7 +16,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
-                <img src="../../asset/img/logo.png" alt="logo Argopuro Kurir" class="img-fluid">
+                <img src="<?= base_url() ?>assets/img/logo.png" alt="logo Argopuro Kurir" class="img-fluid">
               </div>
               <div class="col-sm-9">
                 <h5>PENERIMA</h5>

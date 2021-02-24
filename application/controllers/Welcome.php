@@ -30,14 +30,6 @@ class Welcome extends CI_Controller
 
   public function index()
   {
-    $this->load->view('templates/blog_header');
-    $this->load->view('blog/form_customer');
-    $this->load->view('templates/blog_footer');
-  }
-  private function _inputan()
-  {
-    // simpan inputan penerima pada session
-
     //rules form validation pengirim
     $this->form_validation->set_rules('nm_pengirim', 'Nama Pengirim', 'required|trim');
     $this->form_validation->set_rules('alamat_pengirim', 'Alamat Pengirim', 'required|trim');
@@ -54,14 +46,22 @@ class Welcome extends CI_Controller
     $this->form_validation->set_rules('harga', 'Harga', 'required|trim');
 
     if ($this->form_validation->run() == FALSE) {
-    } else
-      $data_pengirim = [
-        'nm_pengirim' => htmlspecialchars($this->input->post('nama')),
-        'alamat_pengirim' => htmlspecialchars($this->input->post('alamat')),
-        'no_pengirim' => htmlspecialchars($this->input->post('nomor')),
-        'ancer_pengirim' => htmlspecialchars($this->input->post('ket_alamat')),
-        'no_rekening' => htmlspecialchars($this->input->post('no_rek'))
-      ];
+      $this->load->view('templates/blog_header');
+      $this->load->view('blog/form_customer');
+      $this->load->view('templates/blog_footer');
+    } else $this->_inputan();
+  }
+  private function _inputan()
+  {
+    // simpan inputan penerima pada session
+
+    $data_pengirim = [
+      'nm_pengirim' => htmlspecialchars($this->input->post('nama')),
+      'alamat_pengirim' => htmlspecialchars($this->input->post('alamat')),
+      'no_pengirim' => htmlspecialchars($this->input->post('nomor')),
+      'ancer_pengirim' => htmlspecialchars($this->input->post('ket_alamat')),
+      'no_rekening' => htmlspecialchars($this->input->post('no_rek'))
+    ];
     $data_penerima = [
       'nm_penerima' => htmlspecialchars($this->input->post('nama')),
       'alamat_penerima' => htmlspecialchars($this->input->post('alamat')),
@@ -122,9 +122,9 @@ class Welcome extends CI_Controller
       redirect('admin');
     }
   }
-  public function struck($id_Pesanan)
+  public function struck($id_Pesanan = null)
   {
-    // $data['pesanan'] = $this->model->getPesananById($id_Pesanan);
+    $data['pesanan'] = $this->model->getPesananById($id_Pesanan);
     $this->load->view('templates/blog_header');
     $this->load->view('struck');
     $this->load->view('templates/blog_footer');
