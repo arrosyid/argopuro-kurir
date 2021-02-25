@@ -5,15 +5,28 @@ class Pesanan_model extends CI_Model
 {
   public function getAllPesanan()
   {
-    return $this->db->get('pesanan')->result_array();
+    $this->db->select("pengirim.*, penerima.* , pesanan.*");
+    $this->db->from('pesanan');
+    $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
+    $this->db->order_by('date_create', 'DESC');
+    return $this->db->get()->result_array();
   }
   public function getAllPesananById($id)
   {
-    return $this->db->get('pesanan', ['id_pesanan' => $id])->result_array();
+    $this->db->select("pengirim.*, penerima.* , pesanan.*");
+    $this->db->from('pesanan');
+    $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
+    $this->db->order_by('date_create', 'DESC');
+    $this->db->where('pesanan', ['id_pesanan' => $id]);
+    return $this->db->get()->result_array();
   }
   public function getPesananById($id)
   {
-    return $this->db->get('pesanan', ['id_pesanan' => $id])->row_array();
+    $this->db->select("pengirim.*, penerima.* , pesanan.*");
+    $this->db->from('pesanan');
+    $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
+    $this->db->where('pesanan', ['id_pesanan' => $id]);
+    return $this->db->get()->row_array();
   }
   public function insertPesanan($data_Pesanan)
   {

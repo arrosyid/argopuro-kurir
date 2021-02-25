@@ -4,21 +4,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Welcome extends CI_Controller
 {
 
-  /**
-   * Index Page for this controller.
-   *
-   * Maps to the following URL
-   * 		http://example.com/index.php/welcome
-   *	- or -
-   * 		http://example.com/index.php/welcome/index
-   *	- or -
-   * Since this controller is set as the default controller in
-   * config/routes.php, it's displayed at http://example.com/
-   *
-   * So any other public methods not prefixed with an underscore will
-   * map to /index.php/welcome/<method_name>
-   * @see https://codeigniter.com/user_guide/general/urls.html
-   */
+  // Cara mencegah inputan berulang agar tidak sama inputannya(by name/by id/by email/by no_rek)
+
+
   public function __construct()
   {
     parent::__construct();
@@ -69,12 +57,14 @@ class Welcome extends CI_Controller
       'ancer_penerima' => htmlspecialchars($this->input->post('ket_alamat'))
     ];
     $data_pesanan = [
+      'id_pesanan' => uniqid(true),
       'ket_barang' => htmlspecialchars($this->input->post('keterangan')),
       'harga' => htmlspecialchars($this->input->post('harga_barang')),
       'status' => 1
     ];
-    if ($this->Pengirim_model->insertPengirim($data_pengirim)) {
-      //input Pengirim
+    // mencegah user melakukan inputan dengan data yang sama
+    if ($this->pengirim_model->getPengirimById('isi dengan id')) {
+      // jika sudah ada
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -82,15 +72,28 @@ class Welcome extends CI_Controller
       );
       redirect('admin');
     } else {
-      $this->session->set_flashdata(
-        'message',
-        '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Gagal menginputkan data Pengirim</div>'
-      );
-      redirect('admin');
+      // jika data tidak ditemukan
+      if ($this->Pengirim_model->insertPengirim($data_pengirim)) {
+        //input Pengirim
+        $this->session->set_flashdata(
+          'message',
+          '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      Berhasil menginputkan data Pengirim</div>'
+        );
+        redirect('admin');
+      } else {
+        $this->session->set_flashdata(
+          'message',
+          '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      Gagal menginputkan data Pengirim</div>'
+        );
+        redirect('admin');
+      }
     }
-    if ($this->Penerima_model->insertPenerima($data_penerima)) {
-      //input Penerima
+
+    // mencegah user melakukan inputan dengan data yang sama
+    if ($this->penerima_model->getPenerimaById('isi dengan id')) {
+      // jika data sudah ada
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -98,26 +101,38 @@ class Welcome extends CI_Controller
       );
       redirect('admin');
     } else {
-      $this->session->set_flashdata(
-        'message',
-        '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Gagal menginputkan data Penerima</div>'
-      );
-      redirect('admin');
+      // jika data tidak ditemukan
+      if ($this->Penerima_model->insertPenerima($data_penerima)) {
+        //input Penerima
+        $this->session->set_flashdata(
+          'message',
+          '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      Berhasil menginputkan data Penerima</div>'
+        );
+        redirect('admin');
+      } else {
+        $this->session->set_flashdata(
+          'message',
+          '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      Gagal menginputkan data Penerima</div>'
+        );
+        redirect('admin');
+      }
     }
+    // jika data tidak ditemukan
     if ($this->Pesanan_model->insertPesanan($data_pesanan)) {
       //input Pesanan
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Berhasil menginputkan data Pesanan</div>'
+                      Berhasil menginputkan data Pesanan</div>'
       );
       redirect('admin');
     } else {
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Gagal menginputkan data Pesanan</div>'
+                      Gagal menginputkan data Pesanan</div>'
       );
       redirect('admin');
     }

@@ -133,6 +133,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
+                <input type="hidden" class="form-control" name="id_pesanan" id="id_pesanan" placeholder="Isi Barang Dalam Paket">
                 <input type="text" class="form-control" name="ket_barang" id="ket_barang" placeholder="Isi Barang Dalam Paket">
               </div>
             </div>
