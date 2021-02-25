@@ -20,36 +20,39 @@ class Kurir extends CI_Controller
   public function index()
   {
     $data['title'] = 'Dashboard Kurir';
-
+    $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $this->load->view('templates/admin_header', $data);
-    $this->load->view('templates/sidebar');
+    $this->load->view('templates/sidebar', $data);
     $this->load->view('admin/dashboard');
     $this->load->view('templates/admin_footer');
   }
   public function process()
   {
-    $data['title'] = 'Resi Yang Sedang diproses';
+    $data['title'] = 'Resi Yang Sedang Diproses';
+    $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
 
     $this->load->view('templates/admin_header', $data);
-    $this->load->view('templates/sidebar');
+    $this->load->view('templates/sidebar', $data);
     $this->load->view('admin/dashboard');
     $this->load->view('templates/admin_footer');
   }
   public function sent()
   {
     $data['title'] = 'Resi Dalam Pengiriman';
+    $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
 
     $this->load->view('templates/admin_header', $data);
-    $this->load->view('templates/sidebar');
+    $this->load->view('templates/sidebar', $data);
     $this->load->view('admin/dashboard');
     $this->load->view('templates/admin_footer');
   }
   public function success()
   {
     $data['title'] = 'Pengiriman Sukses';
+    $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
 
     $this->load->view('templates/admin_header', $data);
-    $this->load->view('templates/sidebar');
+    $this->load->view('templates/sidebar', $data);
     $this->load->view('admin/dashboard');
     $this->load->view('templates/admin_footer');
   }

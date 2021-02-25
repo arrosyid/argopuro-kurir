@@ -23,15 +23,16 @@
         <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
         <li class="nav-item has-treeview">
-          <a href="#" class="nav-link active">
+          <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir') ?>" class="nav-link 
+                    <?php if ($title == 'Dashboard Kurir') echo 'active'; ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>Dashboard<i class="right fas fa-angle-left"></i></p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Tabel</p>
+                <p>Grafik</p>
               </a>
             </li>
           </ul>
@@ -39,26 +40,29 @@
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Pengiriman Sukses</p>
+                <p>Daftar Pengiriman</p>
               </a>
             </li>
           </ul>
         </li>
         <li class="nav-header">RESI</li>
         <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
+          <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir/sent') ?>" class="nav-link 
+                    <?php if ($title == 'Resi Dalam Pengiriman') echo 'active'; ?>">
             <i class="nav-icon fas fa-paper-plane"></i>
             <p>Dalam Proses</p>
           </a>
         </li>
         <li class="nav-item has-treeview">
-          <a href="##" class="nav-link">
+          <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir/process') ?>" class="nav-link 
+                    <?php if ($title == 'Resi Yang Sedang Diproses') echo 'active'; ?>">
             <i class="nav-icon fas fa-truck-loading"></i>
             <p>Diterima Kantor</p>
           </a>
         </li>
         <li class="nav-item has-treeview">
-          <a href="###" class="nav-link">
+          <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir/success') ?>" class="nav-link 
+                    <?php if ($title == 'Pengiriman Sukses') echo 'active'; ?>">
             <i class="nav-icon fas fa-tasks"></i>
             <p>Pengiriman Sukses</p>
           </a>
