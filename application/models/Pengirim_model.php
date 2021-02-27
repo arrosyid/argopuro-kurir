@@ -15,6 +15,10 @@ class Pengirim_model extends CI_Model
   {
     return $this->db->get('pengirim', ['id_pengirim' => $id])->row_array();
   }
+  public function getPengirimByNamaNomor($nama, $nomor)
+  {
+    return $this->db->get('pengirim', ['nama' => $nama] and ['nomor' => $nomor])->row_array();
+  }
 
   public function insertPengirim($data_Pengirim)
   {
