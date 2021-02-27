@@ -128,12 +128,13 @@ class Welcome extends CI_Controller
 
     // opsi dua
     // mencegah user melakukan inputan dengan data yang sama
-    if ($this->Pengirim_model->getPengirimByNamaNomor($nama_pengirim, $no_hp_pengirim)) {
+    $data['pengirim'] = $this->Pengirim_model->getPengirimByNamaNomor($nama_pengirim, $no_hp_pengirim);
+    if ($nama_pengirim == $data['pengirim']['nama'] and $no_hp_pengirim == $data['pengirim']['no_HP']) {
       // jika sudah ada
       $this->session->set_flashdata(
         'message1',
         '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Berhasil menginputkan data Pengirim</div>'
+                    Daata Sudah terdapat Pada data Pengirim</div>'
       );
       redirect('welcome');
     } else {
@@ -143,14 +144,16 @@ class Welcome extends CI_Controller
         $this->session->set_flashdata(
           'message1',
           '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Berhasil menginputkan data Pengirim</div>'
+          Berhasil menginputkan data Pengirim</div>'
         );
+        redirect('welcome');
       } else {
         $this->session->set_flashdata(
           'message1',
           '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Gagal menginputkan data Pengirim</div>'
+          Gagal menginputkan data Pengirim</div>'
         );
+        redirect('welcome');
       }
     }
 
