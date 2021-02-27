@@ -24,7 +24,6 @@ class Welcome extends CI_Controller
     $this->form_validation->set_rules('alamat_pengirim', 'Alamat Pengirim', 'required|trim');
     $this->form_validation->set_rules('no_pengirim', 'Nomor Pengirim', 'required|trim');
     $this->form_validation->set_rules('ancer_pengirim', 'Acer-ancer Pengirim', 'required|trim');
-    $this->form_validation->set_rules('no_rek', 'nomor rekening Pengirim', 'required|trim');
     //rules form validation penerima
     $this->form_validation->set_rules('nm_penerima', 'Nama Penerima', 'required|trim');
     $this->form_validation->set_rules('alamat_penerima', 'Alamat Penerima', 'required|trim');
@@ -44,10 +43,13 @@ class Welcome extends CI_Controller
   {
     // simpan inputan penerima pada session
 
+    $nama_pengirim = htmlspecialchars($this->input->post('nm_pengirim', true));
+    $no_hp_pengirim = htmlspecialchars($this->input->post('no_pengirim', true));
+
     $data_pengirim = [
-      'nama' => htmlspecialchars($this->input->post('nm_pengirim', true)),
+      'nama' => $nama_pengirim,
       'alamat' => htmlspecialchars($this->input->post('alamat_pengirim', true)),
-      'no_HP' => htmlspecialchars($this->input->post('no_pengirim', true)),
+      'no_HP' => $no_hp_pengirim,
       'ket_alamat' => htmlspecialchars($this->input->post('ancer_pengirim', true)),
       'no_rek' => htmlspecialchars($this->input->post('no_rek', true))
     ];
@@ -67,58 +69,137 @@ class Welcome extends CI_Controller
       'date_created' => time()
     ];
     // disini cegah untuk tidak memasukkan data duplikat
+    // $this->Pengirim_model->getPengirimByNamaNomor($nama_pengirim, $no_hp_pengirim);
+    // opsi satu
 
-    // input data pengirim
-    if ($this->Pengirim_model->insertPengirim($data_pengirim)) {
-      // input berhasil
+    // // input data pengirim
+    // if ($this->Pengirim_model->insertPengirim($data_pengirim)) {
+    //   // input berhasil
+    //   $this->session->set_flashdata(
+    //     'message1',
+    //     '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    //                 Berhasil menginputkan data Pengirim</div>'
+    //   );
+    //   // input data penerima
+    //   if ($this->Penerima_model->insertPenerima($data_penerima)) {
+    //     $this->session->set_flashdata(
+    //       'message2',
+    //       '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    //                   Berhasil menginputkan data Penerima</div>'
+    //     );
+    //     redirect('welcome');
+    //     // // input data pesanan
+    //     // if ($this->Pesanan_model->insertPesanan($data_pesanan)) {
+    //     //   // input berhasil
+    //     //   $this->session->set_flashdata(
+    //     //     'message3',
+    //     //     '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    //     //                   Berhasil menginputkan data Pesanan</div>'
+    //     //   );
+    //     //   redirect('welcome');
+    //     // } else {
+    //     //   // jika input pesananan gagal
+    //     //   $this->session->set_flashdata(
+    //     //     'message3',
+    //     //     '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    //     //                   Gagal menginputkan data Pesanan</div>'
+    //     //   );
+    //     // }
+    //   } else {
+    //     // jika input penerima gagal
+    //     $this->session->set_flashdata(
+    //       'message2',
+    //       '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    //       Gagal menginputkan data Penerima</div>'
+    //     );
+    //     redirect('welcome');
+    //   }
+    // } else {
+    //   // jika input pengirim gagal
+    //   $this->session->set_flashdata(
+    //     'message1',
+    //     '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    //                 Gagal menginputkan data Pengirim</div>'
+    //   );
+    //   redirect('welcome');
+    // }
+
+
+
+    // opsi dua
+    // mencegah user melakukan inputan dengan data yang sama
+    if ($this->Pengirim_model->getPengirimByNamaNomor($nama_pengirim, $no_hp_pengirim)) {
+      // jika sudah ada
       $this->session->set_flashdata(
         'message1',
         '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     Berhasil menginputkan data Pengirim</div>'
       );
-      // input data penerima
-      if ($this->Penerima_model->insertPenerima($data_penerima)) {
-        $this->session->set_flashdata(
-          'message2',
-          '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Berhasil menginputkan data Penerima</div>'
-        );
-        redirect('welcome');
-        // // input data pesanan
-        // if ($this->Pesanan_model->insertPesanan($data_pesanan)) {
-        //   // input berhasil
-        //   $this->session->set_flashdata(
-        //     'message3',
-        //     '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        //                   Berhasil menginputkan data Pesanan</div>'
-        //   );
-        //   redirect('welcome');
-        // } else {
-        //   // jika input pesananan gagal
-        //   $this->session->set_flashdata(
-        //     'message3',
-        //     '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        //                   Gagal menginputkan data Pesanan</div>'
-        //   );
-        // }
-      } else {
-        // jika input penerima gagal
-        $this->session->set_flashdata(
-          'message2',
-          '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Gagal menginputkan data Penerima</div>'
-        );
-        redirect('welcome');
-      }
-    } else {
-      // jika input pengirim gagal
-      $this->session->set_flashdata(
-        'message1',
-        '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Gagal menginputkan data Pengirim</div>'
-      );
       redirect('welcome');
+    } else {
+      // jika data tidak ditemukan
+      if ($this->Pengirim_model->insertPengirim($data_pengirim)) {
+        //input Pengirim
+        $this->session->set_flashdata(
+          'message1',
+          '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      Berhasil menginputkan data Pengirim</div>'
+        );
+      } else {
+        $this->session->set_flashdata(
+          'message1',
+          '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      Gagal menginputkan data Pengirim</div>'
+        );
+      }
     }
+
+    // // // mencegah user melakukan inputan dengan data yang sama
+    // // if ($this->Penerima_model->getPenerimaById('isi dengan id')) {
+    // //   // jika data sudah ada
+    // //   $this->session->set_flashdata(
+    // //     'message2',
+    // //     '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    // //                 Berhasil menginputkan data Penerima</div>'
+    // //   );
+    // //   redirect('welcome');
+    // // } else {
+    // // jika data tidak ditemukan
+    // if ($this->Penerima_model->insertPenerima($data_penerima)) {
+    //   //input Penerima
+    //   $this->session->set_flashdata(
+    //     'message2',
+    //     '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    //                   Berhasil menginputkan data Penerima</div>'
+    //   );
+    //   redirect('welcome');
+    // } else {
+    //   $this->session->set_flashdata(
+    //     'message2',
+    //     '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    //                   Gagal menginputkan data Penerima</div>'
+    //   );
+    //   redirect('welcome');
+    // }
+    // // }
+
+    // // // jika data tidak ditemukan
+    // // if ($this->Pesanan_model->insertPesanan($data_pesanan)) {
+    // //   //input Pesanan
+    // //   $this->session->set_flashdata(
+    // //     'message3',
+    // //     '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    // //                   Berhasil menginputkan data Pesanan</div>'
+    // //   );
+    // //   redirect('welcome');
+    // // } else {
+    //   $this->session->set_flashdata(
+    //     'message3',
+    //     '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    //                   Gagal menginputkan data Pesanan</div>'
+    //   );
+    //   redirect('welcome');
+    // // }
   }
   public function struck($id_Pesanan = null)
   {

@@ -59,7 +59,6 @@
               </div>
             </div>
           </div>
-          <?= form_error('no_rek', '<small class="text-danger pl-3">', '</small>'); ?>
           <div class="row">
             <div class="col-sm-2">
               <label>Nomor Rekening</label>
