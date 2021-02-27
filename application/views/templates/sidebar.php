@@ -24,7 +24,7 @@
               with font-awesome or any other icon font library -->
         <li class="nav-item has-treeview">
           <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir') ?>" class="nav-link 
-                    <?php if ($title == 'Dashboard Kurir') echo 'active'; ?>">
+                    <?php if ($title == 'Dashboard') echo 'active'; ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>Dashboard<i class="right fas fa-angle-left"></i></p>
           </a>
@@ -47,15 +47,15 @@
         </li>
         <li class="nav-header">RESI</li>
         <li class="nav-item has-treeview">
-          <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir/sent') ?>" class="nav-link 
-                    <?php if ($title == 'Resi Dalam Pengiriman') echo 'active'; ?>">
+          <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir/process') ?>" class="nav-link 
+                    <?php if ($title == 'Dalam Proses') echo 'active'; ?>">
             <i class="nav-icon fas fa-paper-plane"></i>
             <p>Dalam Proses</p>
           </a>
         </li>
         <li class="nav-item has-treeview">
-          <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir/process') ?>" class="nav-link 
-                    <?php if ($title == 'Resi Yang Sedang Diproses') echo 'active'; ?>">
+          <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir/sent') ?>" class="nav-link 
+                    <?php if ($title == 'Diterima Kantor') echo 'active'; ?>">
             <i class="nav-icon fas fa-truck-loading"></i>
             <p>Diterima Kantor</p>
           </a>

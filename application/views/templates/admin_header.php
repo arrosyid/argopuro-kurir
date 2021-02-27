@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Document</title>
+  <title><?= $title ?></title>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
@@ -60,12 +60,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Blank Page</h1>
+              <h1><?= $subtitle ?></h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Blank Page</li>
+                <li class="breadcrumb-item active"><?= $title ?></li>
               </ol>
             </div>
           </div>

@@ -19,7 +19,8 @@ class Kurir extends CI_Controller
 
   public function index()
   {
-    $data['title'] = 'Dashboard Kurir';
+    $data['title'] = 'Dashboard';
+    $data['subtitle'] = 'Dashboard Kurir';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
@@ -28,7 +29,8 @@ class Kurir extends CI_Controller
   }
   public function process()
   {
-    $data['title'] = 'Resi Yang Sedang Diproses';
+    $data['title'] = 'Dalam Proses';
+    $data['subtitle'] = 'Resi Yang Sedang Diproses';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
 
     $this->load->view('templates/admin_header', $data);
@@ -38,7 +40,8 @@ class Kurir extends CI_Controller
   }
   public function sent()
   {
-    $data['title'] = 'Resi Dalam Pengiriman';
+    $data['title'] = 'Diterima Kantor';
+    $data['subtitle'] = 'Resi Dalam Pengiriman';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
 
     $this->load->view('templates/admin_header', $data);
@@ -49,6 +52,7 @@ class Kurir extends CI_Controller
   public function success()
   {
     $data['title'] = 'Pengiriman Sukses';
+    $data['subtitle'] = 'Pengiriman Telah Sukses';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
 
     $this->load->view('templates/admin_header', $data);
