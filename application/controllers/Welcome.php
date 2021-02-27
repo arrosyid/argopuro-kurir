@@ -4,15 +4,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Welcome extends CI_Controller
 {
 
-  // Cara mencegah inputan berulang agar tidak sama inputannya(by name/by id/by email/by no_rek)
+  // Mencegah inputan berulang by name and nomor
+  // 
 
 
   public function __construct()
   {
     parent::__construct();
     verified_access(true);
-    $this->load->model('pengirim_model');
-    $this->load->model('penerima_model');
+    $this->load->model('Pengirim_model');
+    $this->load->model('Penerima_model');
     $this->load->model('Pesanan_model');
   }
 
@@ -44,97 +45,79 @@ class Welcome extends CI_Controller
     // simpan inputan penerima pada session
 
     $data_pengirim = [
-      'nm_pengirim' => htmlspecialchars($this->input->post('nama')),
-      'alamat_pengirim' => htmlspecialchars($this->input->post('alamat')),
-      'no_pengirim' => htmlspecialchars($this->input->post('nomor')),
-      'ancer_pengirim' => htmlspecialchars($this->input->post('ket_alamat')),
-      'no_rekening' => htmlspecialchars($this->input->post('no_rek'))
+      'nama' => htmlspecialchars($this->input->post('nm_pengirim', true)),
+      'alamat' => htmlspecialchars($this->input->post('alamat_pengirim', true)),
+      'no_HP' => htmlspecialchars($this->input->post('no_pengirim', true)),
+      'ket_alamat' => htmlspecialchars($this->input->post('ancer_pengirim', true)),
+      'no_rek' => htmlspecialchars($this->input->post('no_rek', true))
     ];
     $data_penerima = [
-      'nm_penerima' => htmlspecialchars($this->input->post('nama')),
-      'alamat_penerima' => htmlspecialchars($this->input->post('alamat')),
-      'no_penerima' => htmlspecialchars($this->input->post('nomor')),
-      'ancer_penerima' => htmlspecialchars($this->input->post('ket_alamat'))
+      'nama' => htmlspecialchars($this->input->post('nm_penerima', true)),
+      'alamat' => htmlspecialchars($this->input->post('alamat_penerima', true)),
+      'no_HP' => htmlspecialchars($this->input->post('no_penerima', true)),
+      'ket_alamat' => htmlspecialchars($this->input->post('ancer_penerima', true))
     ];
     $data_pesanan = [
+      'id_pengirim' => $this->input->post('id_pengirim', true),
+      'id_penerima' => $this->input->post('id_penerima', true),
       'id_pesanan' => uniqid(true),
-      'ket_barang' => htmlspecialchars($this->input->post('keterangan')),
-      'harga' => htmlspecialchars($this->input->post('harga_barang')),
-      'status' => 1
+      'keterangan' => htmlspecialchars($this->input->post('ket_barang', true)),
+      'harga_barang' => htmlspecialchars($this->input->post('harga', true)),
+      'status' => 1,
+      'date_created' => time()
     ];
-    // mencegah user melakukan inputan dengan data yang sama
-    if ($this->pengirim_model->getPengirimById('isi dengan id')) {
-      // jika sudah ada
+    // disini cegah untuk tidak memasukkan data duplikat
+
+    // input data pengirim
+    if ($this->Pengirim_model->insertPengirim($data_pengirim)) {
+      // input berhasil
       $this->session->set_flashdata(
-        'message',
+        'message1',
         '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     Berhasil menginputkan data Pengirim</div>'
       );
-      redirect('admin');
-    } else {
-      // jika data tidak ditemukan
-      if ($this->Pengirim_model->insertPengirim($data_pengirim)) {
-        //input Pengirim
-        $this->session->set_flashdata(
-          'message',
-          '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Berhasil menginputkan data Pengirim</div>'
-        );
-        redirect('admin');
-      } else {
-        $this->session->set_flashdata(
-          'message',
-          '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Gagal menginputkan data Pengirim</div>'
-        );
-        redirect('admin');
-      }
-    }
-
-    // mencegah user melakukan inputan dengan data yang sama
-    if ($this->penerima_model->getPenerimaById('isi dengan id')) {
-      // jika data sudah ada
-      $this->session->set_flashdata(
-        'message',
-        '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Berhasil menginputkan data Penerima</div>'
-      );
-      redirect('admin');
-    } else {
-      // jika data tidak ditemukan
+      // input data penerima
       if ($this->Penerima_model->insertPenerima($data_penerima)) {
-        //input Penerima
         $this->session->set_flashdata(
-          'message',
+          'message2',
           '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                       Berhasil menginputkan data Penerima</div>'
         );
-        redirect('admin');
+        redirect('welcome');
+        // // input data pesanan
+        // if ($this->Pesanan_model->insertPesanan($data_pesanan)) {
+        //   // input berhasil
+        //   $this->session->set_flashdata(
+        //     'message3',
+        //     '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        //                   Berhasil menginputkan data Pesanan</div>'
+        //   );
+        //   redirect('welcome');
+        // } else {
+        //   // jika input pesananan gagal
+        //   $this->session->set_flashdata(
+        //     'message3',
+        //     '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        //                   Gagal menginputkan data Pesanan</div>'
+        //   );
+        // }
       } else {
+        // jika input penerima gagal
         $this->session->set_flashdata(
-          'message',
+          'message2',
           '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Gagal menginputkan data Penerima</div>'
+          Gagal menginputkan data Penerima</div>'
         );
-        redirect('admin');
+        redirect('welcome');
       }
-    }
-    // jika data tidak ditemukan
-    if ($this->Pesanan_model->insertPesanan($data_pesanan)) {
-      //input Pesanan
-      $this->session->set_flashdata(
-        'message',
-        '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Berhasil menginputkan data Pesanan</div>'
-      );
-      redirect('admin');
     } else {
+      // jika input pengirim gagal
       $this->session->set_flashdata(
-        'message',
+        'message1',
         '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Gagal menginputkan data Pesanan</div>'
+                    Gagal menginputkan data Pengirim</div>'
       );
-      redirect('admin');
+      redirect('welcome');
     }
   }
   public function struck($id_Pesanan = null)

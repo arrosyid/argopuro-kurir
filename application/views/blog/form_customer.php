@@ -8,6 +8,8 @@
 
       <div class="card-body">
         <form role="form" action="" method="POST">
+          <?= $this->session->flashdata('message1'); ?>
+          <?= $this->session->flashdata('message2'); ?>
           <!-- section -->
           <div class="mb-3">
             <strong>Pengirim</strong>
