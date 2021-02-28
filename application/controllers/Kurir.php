@@ -70,8 +70,8 @@ class Kurir extends CI_Controller
   {
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $data['resi'] = $this->Pesanan_model->getPesananById($id_pesanan);
-    $data['title'] = 'Resi' . $data['resi'];
-    switch ($data['resi']['status']) {
+    $data['title'] = 'Resi' . $data['pesanan']['nama'];
+    switch ($data['pesanan']['status']) {
       case 1:
         $data['subtitle'] = 'Resi Dipending';
         break;
@@ -87,7 +87,7 @@ class Kurir extends CI_Controller
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
-    $this->load->view('admin/dashboard');
+    $this->load->view('admin/struck_kurir');
     $this->load->view('templates/admin_footer');
   }
 }

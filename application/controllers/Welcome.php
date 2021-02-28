@@ -68,10 +68,10 @@ class Welcome extends CI_Controller
     }
 
     $data_pengirim = [
-      'nama' => $nama_pengirim,
-      'alamat' => htmlspecialchars($this->input->post('alamat_pengirim', true)),
-      'no_HP' => $no_hp_pengirim,
-      'ket_alamat' => htmlspecialchars($this->input->post('ancer_pengirim', true)),
+      'nm_pengirim' => $nama_pengirim,
+      'alamat_pengirim' => htmlspecialchars($this->input->post('alamat_pengirim', true)),
+      'no_HP_pengirim' => $no_hp_pengirim,
+      'ket_alamat_pengirim' => htmlspecialchars($this->input->post('ancer_pengirim', true)),
       'no_rek' => htmlspecialchars($this->input->post('no_rek', true))
     ];
     // // menyimpan data pada session
@@ -81,10 +81,10 @@ class Welcome extends CI_Controller
     // die;
 
     $data_penerima = [
-      'nama' => $nama_penerima,
-      'alamat' => htmlspecialchars($this->input->post('alamat_penerima', true)),
-      'no_HP' => $no_hp_penerima,
-      'ket_alamat' => htmlspecialchars($this->input->post('ancer_penerima', true))
+      'nm_penerima' => $nama_penerima,
+      'alamat_penerima' => htmlspecialchars($this->input->post('alamat_penerima', true)),
+      'no_HP_penerima' => $no_hp_penerima,
+      'ket_alamat_penerima' => htmlspecialchars($this->input->post('ancer_penerima', true))
     ];
     $data_pesanan = [
       'id_pengirim' => $id_pengirim,
@@ -98,7 +98,7 @@ class Welcome extends CI_Controller
     ];
 
     // mencegah user melakukan inputan dengan data yang sama
-    if ($nama_pengirim == $data['pengirim']['nama'] and $no_hp_pengirim == $data['pengirim']['no_HP']) {
+    if ($nama_pengirim == $data['pengirim']['nm_pengirim'] and $no_hp_pengirim == $data['pengirim']['no_HP_pengirim']) {
       // jika sudah ada
       $this->session->set_flashdata(
         'message1',
@@ -127,7 +127,7 @@ class Welcome extends CI_Controller
     }
 
     // mencegah user melakukan inputan dengan data yang sama
-    if ($nama_penerima == $data['penerima']['nama'] and $no_hp_penerima == $data['penerima']['no_HP']) {
+    if ($nama_penerima == $data['penerima']['nm_penerima'] and $no_hp_penerima == $data['penerima']['no_HP_penerima']) {
       // jika data sudah ada
       $this->session->set_flashdata(
         'message2',
@@ -175,7 +175,7 @@ class Welcome extends CI_Controller
   }
   public function struck($id_Pesanan = null)
   {
-    $data['pesanan'] = $this->model->getPesananById($id_Pesanan);
+    $data['resi'] = $this->model->getPesananById($id_Pesanan);
     $this->load->view('templates/blog_header');
     $this->load->view('struck');
     $this->load->view('templates/blog_footer');
