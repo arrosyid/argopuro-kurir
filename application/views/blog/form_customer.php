@@ -10,6 +10,7 @@
         <form role="form" action="" method="POST">
           <?= $this->session->flashdata('message1'); ?>
           <?= $this->session->flashdata('message2'); ?>
+          <?= $this->session->flashdata('message3'); ?>
           <!-- section -->
           <div class="mb-3">
             <strong>Pengirim</strong>
@@ -22,6 +23,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
+                <input type="hidden" class="form-control" name="id_pengirim" id="id_pengirim">
                 <input type="text" class="form-control" name="nm_pengirim" id="nm_pengirim" placeholder="Isi Nama Pengirim">
               </div>
             </div>
@@ -83,6 +85,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
+                <input type="hidden" class="form-control" name="id_penerima" id="id_penerima">
                 <input type="text" class="form-control" name="nm_penerima" id="nm_penerima" placeholder="Isi Nama Penerima">
               </div>
             </div>
@@ -134,7 +137,6 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="hidden" class="form-control" name="id_pesanan" id="id_pesanan" placeholder="Isi Barang Dalam Paket">
                 <input type="text" class="form-control" name="ket_barang" id="ket_barang" placeholder="Isi Barang Dalam Paket">
               </div>
             </div>
