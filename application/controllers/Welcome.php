@@ -8,6 +8,7 @@ class Welcome extends CI_Controller
   // memanggil data pada session
   // mengambil id pengirim dan penerima
   // memasukkan id pengirim dan penerima jika baru
+  // rubah dari session menjadi ajax
 
 
   public function __construct()
@@ -74,8 +75,8 @@ class Welcome extends CI_Controller
       'no_rek' => htmlspecialchars($this->input->post('no_rek', true))
     ];
     // // menyimpan data pada session
-    // $this->session->set_userdata($data_pengirim);
-    // $data['simpanDataPengirim'] = $this->session->userdata();
+    // $this->session->set_userdata('nama', $nama_pengirim);
+    // $data['simpanDataPengirim'] = $this->session->userdata('nama');
     // var_dump($data['simpanDataPengirim']);
     // die;
 
@@ -87,7 +88,7 @@ class Welcome extends CI_Controller
     ];
     $data_pesanan = [
       'id_pengirim' => $id_pengirim,
-      'id_penerima' => $data['penerima']['id_penerima'],
+      'id_penerima' => $id_penerima,
       'id_pesanan' => uniqid(true),
       'keterangan' => htmlspecialchars($this->input->post('ket_barang', true)),
       'harga_barang' => htmlspecialchars($this->input->post('harga', true)),

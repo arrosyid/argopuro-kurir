@@ -3,13 +3,39 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pesanan_model extends CI_Model
 {
-  public function getAllPesanan()
+  public function getAllPesanan($type)
   {
-    $this->db->select("pengirim.*, penerima.* , pesanan.*");
-    $this->db->from('pesanan');
-    $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
-    $this->db->order_by('date_create', 'DESC');
-    return $this->db->get()->result_array();
+    if ($type == 'all data') {
+      $this->db->select("pengirim.*, penerima.* , pesanan.*");
+      $this->db->from('pesanan');
+      $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
+      $this->db->order_by('date_create', 'DESC');
+      return $this->db->get()->result_array();
+    }
+    if ($type == 'proses') {
+      $this->db->select("pengirim.*, penerima.* , pesanan.*");
+      $this->db->from('pesanan');
+      $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
+      $this->db->where('pesanan', 'status = 2');
+      $this->db->order_by('date_create', 'DESC');
+      return $this->db->get()->result_array();
+    }
+    if ($type == 'diterima') {
+      $this->db->select("pengirim.*, penerima.* , pesanan.*");
+      $this->db->from('pesanan');
+      $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
+      $this->db->where('pesanan', 'status = 3');
+      $this->db->order_by('date_create', 'DESC');
+      return $this->db->get()->result_array();
+    }
+    if ($type == 'sukses') {
+      $this->db->select("pengirim.*, penerima.* , pesanan.*");
+      $this->db->from('pesanan');
+      $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
+      $this->db->where('pesanan', 'status = 4');
+      $this->db->order_by('date_create', 'DESC');
+      return $this->db->get()->result_array();
+    }
   }
   public function getAllPesananById($id)
   {
