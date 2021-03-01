@@ -177,7 +177,7 @@ class Welcome extends CI_Controller
   {
     $data['resi'] = $this->model->getPesananById($id_Pesanan);
     $this->load->view('templates/blog_header');
-    $this->load->view('struck');
+    $this->load->view('blog/struck');
     $this->load->view('templates/blog_footer');
   }
 }
