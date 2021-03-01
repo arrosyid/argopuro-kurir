@@ -10,7 +10,7 @@
               <h3 class="card-title">Title</h3>
 
               <div class="card-tools">
-                <a href="<?= base_url('kurir/struck' . $r['id_pesanan']) ?>" class="btn btn-tool" data-toggle="tooltip" title="Detail">
+                <a href="<?= $r != null ? base_url('kurir/struck' . $r['id_pesanan']) : '#' ?>" class="btn btn-tool" data-toggle="tooltip" title="Detail">
                   <i class="fas fa-share-square"></i></a>
               </div>
             </div>
@@ -23,26 +23,26 @@
                   <h5>PENERIMA</h5>
                   <div class="row">
                     <div class="col-5">NAMA</div>
-                    <div class="col-7"><?= $r['nm_penerima'] == null ? 'Data Tidak Ditemukan' : $r['nm_penerima'] ?></div>
+                    <div class="col-7"><?= $r == null ? 'Data Tidak Ditemukan' : $r['nm_penerima'] ?></div>
                   </div>
                   <div class="row">
                     <div class="col-5">ALAMAT</div>
-                    <div class="col-7"><?= $r['alamat_penerima'] == null ? 'Data Tidak Ditemukan' : $r['alamat_penerima'] ?></div>
+                    <div class="col-7"><?= $r == null ? 'Data Tidak Ditemukan' : $r['alamat_penerima'] ?></div>
                   </div>
                   <div class="row">
                     <div class="col-5">NOMOR HP</div>
-                    <div class="col-7"><?= $r['no_HP_penerima'] == null ? 'Data Tidak Ditemukan' : $r['no_HP_penerima'] ?></div>
+                    <div class="col-7"><?= $r == null ? 'Data Tidak Ditemukan' : $r['no_HP_penerima'] ?></div>
                   </div>
                   <div class="row">
                     <div class="col-5">KET ALAMAT</div>
-                    <div class="col-7"><?= $r['ket_alamat_penerima'] == null ? 'Data Tidak Ditemukan' : $r['ket_alamat_penerima'] ?></div>
+                    <div class="col-7"><?= $r == null ? 'Data Tidak Ditemukan' : $r['ket_alamat_penerima'] ?></div>
                   </div>
                 </div>
               </div>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <a href="#" class="btn btn-primary float-right">Konfirmasi</a>
+              <a href="<?= $r != null ? base_url('kurir/struck' . $r['id_pesanan']) : '#' ?>" class="btn btn-primary float-right">Detail</a>
             </div>
           </div>
         <?php endforeach ?>
