@@ -173,9 +173,12 @@ class Welcome extends CI_Controller
       redirect('welcome');
     }
   }
-  public function struck($id_Pesanan = null)
+  public function struck($id_pesanan = null)
   {
-    $data['resi'] = $this->model->getPesananById($id_Pesanan);
+    if ($id_pesanan == null) {
+      $data['resi'] = $this->Pesanan_model->get;
+    } else
+      $data['resi'] = $this->Pesanan_model->getPesananById($id_pesanan);
     $this->load->view('templates/blog_header');
     $this->load->view('blog/struck');
     $this->load->view('templates/blog_footer');
