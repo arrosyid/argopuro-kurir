@@ -176,7 +176,7 @@ class Welcome extends CI_Controller
   public function struck($id_pesanan = null)
   {
     if ($id_pesanan == null) {
-      $data['resi'] = $this->Pesanan_model->get;
+      $data['resi'] = null;
     } else
       $data['resi'] = $this->Pesanan_model->getPesananById($id_pesanan);
     $this->load->view('templates/blog_header');
