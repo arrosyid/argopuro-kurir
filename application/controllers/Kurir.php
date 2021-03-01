@@ -39,7 +39,7 @@ class Kurir extends CI_Controller
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
-    $this->load->view('admin/dashboard');
+    $this->load->view('admin/struck_kurir');
     $this->load->view('templates/admin_footer');
   }
   public function sent()
@@ -51,7 +51,7 @@ class Kurir extends CI_Controller
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
-    $this->load->view('admin/dashboard');
+    $this->load->view('admin/struck_kurir');
     $this->load->view('templates/admin_footer');
   }
   public function success()
@@ -63,7 +63,7 @@ class Kurir extends CI_Controller
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
-    $this->load->view('admin/dashboard');
+    $this->load->view('admin/struck_kurir');
     $this->load->view('templates/admin_footer');
   }
   public function struck($id_pesanan = null)
@@ -92,7 +92,6 @@ class Kurir extends CI_Controller
     $this->load->view('templates/sidebar', $data);
     $this->load->view('admin/struck_kurir');
     $this->load->view('templates/admin_footer');
-
 
     $data = [
       'status' => $this->post->input('changeStatus')
