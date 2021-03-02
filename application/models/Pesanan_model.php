@@ -51,8 +51,9 @@ class Pesanan_model extends CI_Model
   {
     $this->db->select("pengirim.*, penerima.* , pesanan.*");
     $this->db->from('pesanan');
-    $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
-    $this->db->where('pesanan', ['id_pesanan' => $id]);
+    $this->db->join('pengirim', 'pesanan.id_pengirim = pengirim.id_pengirim');
+    $this->db->join('penerima', ', pesanan.id_penerima=penerima.id_penerima');
+    $this->db->where('id_pesanan', $id);
     return $this->db->get()->row_array();
   }
   public function insertPesanan($data_Pesanan)

@@ -69,11 +69,11 @@
               <h5>DESKRIPSI PENGIRIMAN</h5>
               <div class="row">
                 <div class="col-4">KETERANGAN BARANG</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['ket_barang'] ?></div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['keterangan'] ?></div>
               </div>
               <div class="row">
                 <div class="col-4">HARGA BARANG</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : "Rp. " . number_format($resi['harga'], 0, ',', '.') ?></div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : "Rp. " . number_format($resi['harga_barang'], 0, ',', '.') ?></div>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@
     </div>
     <hr>
     <?php if ($resi != null) { ?>
-      <form action="">
+      <form action="" method="POST">
         <div class="row">
           <div class="col-6">
             <div class="form-check-inline">
@@ -96,13 +96,13 @@
               </label>
             </div>
             <div class="form-check-inline">
-              <label class="form-check-label" for="radio2">
-                <input type="radio" class="form-check-input" id="radio2" name="changeStatus" value="2" <?= $resi['status'] == 3 ? 'checked' : '' ?>>Dalam Pengiriman
+              <label class="form-check-label" for="radio3">
+                <input type="radio" class="form-check-input" id="radio3" name="changeStatus" value="3" <?= $resi['status'] == 3 ? 'checked' : '' ?>>Dalam Pengiriman
               </label>
             </div>
             <div class="form-check-inline">
-              <label class="form-check-label" for="radio2">
-                <input type="radio" class="form-check-input" id="radio2" name="changeStatus" value="2" <?= $resi['status'] == 4 ? 'checked' : '' ?>>Pengiriman Sukses
+              <label class="form-check-label" for="radio4">
+                <input type="radio" class="form-check-input" id="radio4" name="changeStatus" value="4" <?= $resi['status'] == 4 ? 'checked' : '' ?>>Pengiriman Sukses
               </label>
             </div>
           </div>

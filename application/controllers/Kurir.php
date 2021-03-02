@@ -71,32 +71,34 @@ class Kurir extends CI_Controller
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     if ($id_pesanan == null) {
       $data['resi'] = null;
-    } else
+      $data['title'] = 'Resi Tidak Ditemukan';
+      $data['subtitle'] = 'Resi telah terhapus atau tidak ada dalam database';
+    } else {
       $data['resi'] = $this->Pesanan_model->getPesananById($id_pesanan);
-    $data['title'] = 'Resi' . $data['pesanan']['nama'];
-    switch ($data['pesanan']['status']) {
-      case 1:
-        $data['subtitle'] = 'Resi Dipending';
-        break;
-      case 2:
-        $data['subtitle'] = 'Resi Diterima Kantor';
-        break;
-      case 3:
-        $data['subtitle'] = 'Resi Dalam Pengiriman';
-        break;
-      default:
-        $data['subtitle'] = 'Pengiriman Telah Sukses';
+      $data['title'] = 'Resi' . $data['resi']['nm_pengirim'];
+      switch ($data['resi']['status']) {
+        case 1:
+          $data['subtitle'] = 'Resi Dipending';
+          break;
+        case 2:
+          $data['subtitle'] = 'Resi Diterima Kantor';
+          break;
+        case 3:
+          $data['subtitle'] = 'Resi Dalam Pengiriman';
+          break;
+        default:
+          $data['subtitle'] = 'Pengiriman Telah Sukses';
+      }
     }
-
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
     $this->load->view('admin/struck_kurir');
     $this->load->view('templates/admin_footer');
 
-    $data = [
-      'status' => $this->post->input('changeStatus')
+    $data_status = [
+      'status' => $this->input->post('changeStatus', true)
     ];
-    if ($this->Pesanan_model->updatePesananById(1, $id_pesanan, $data)) {
+    if ($this->Pesanan_model->updatePesananById(1, $id_pesanan, $data_status)) {
       //input Pesanan
       $this->session->set_flashdata(
         'message',
@@ -110,7 +112,10 @@ class Kurir extends CI_Controller
         '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
           Gagal Mengubah Status Pesanan</div>'
       );
-      redirect('kurir/struck');
+      redirect('kurir');
     }
+  }
+  public function changeStatus($id_pesanan)
+  {
   }
 }
