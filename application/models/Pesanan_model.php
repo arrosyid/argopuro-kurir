@@ -8,8 +8,9 @@ class Pesanan_model extends CI_Model
     if ($type == 'all data') {
       $this->db->select("pengirim.*, penerima.* , pesanan.*");
       $this->db->from('pesanan');
-      $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
-      $this->db->order_by('date_create', 'DESC');
+      $this->db->join('pengirim', 'pesanan.id_pengirim = pengirim.id_pengirim');
+      $this->db->join('penerima', ', pesanan.id_penerima=penerima.id_penerima');
+      $this->db->order_by('date_created', 'DESC');
       return $this->db->get()->result_array();
     }
     if ($type == 'proses') {
