@@ -16,25 +16,28 @@ class Pesanan_model extends CI_Model
     if ($type == 'proses') {
       $this->db->select("pengirim.*, penerima.* , pesanan.*");
       $this->db->from('pesanan');
-      $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
-      $this->db->where('pesanan', 'status = 2');
-      $this->db->order_by('date_create', 'DESC');
+      $this->db->join('pengirim', 'pesanan.id_pengirim = pengirim.id_pengirim');
+      $this->db->join('penerima', ', pesanan.id_penerima=penerima.id_penerima');
+      $this->db->where('status = 2');
+      $this->db->order_by('date_created', 'DESC');
       return $this->db->get()->result_array();
     }
     if ($type == 'diterima') {
       $this->db->select("pengirim.*, penerima.* , pesanan.*");
       $this->db->from('pesanan');
-      $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
-      $this->db->where('pesanan', 'status = 3');
-      $this->db->order_by('date_create', 'DESC');
+      $this->db->join('pengirim', 'pesanan.id_pengirim = pengirim.id_pengirim');
+      $this->db->join('penerima', ', pesanan.id_penerima=penerima.id_penerima');
+      $this->db->where('status = 3');
+      $this->db->order_by('date_created', 'DESC');
       return $this->db->get()->result_array();
     }
     if ($type == 'sukses') {
       $this->db->select("pengirim.*, penerima.* , pesanan.*");
       $this->db->from('pesanan');
-      $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
-      $this->db->where('pesanan', 'status = 4');
-      $this->db->order_by('date_create', 'DESC');
+      $this->db->join('pengirim', 'pesanan.id_pengirim = pengirim.id_pengirim');
+      $this->db->join('penerima', ', pesanan.id_penerima=penerima.id_penerima');
+      $this->db->where('status = 4');
+      $this->db->order_by('date_created', 'DESC');
       return $this->db->get()->result_array();
     }
   }
@@ -42,8 +45,9 @@ class Pesanan_model extends CI_Model
   {
     $this->db->select("pengirim.*, penerima.* , pesanan.*");
     $this->db->from('pesanan');
-    $this->db->join('pesanan', 'pesanan.id_pengirim = pengirim.id_pengirim, pesanan.id_penerima=penerima.id_penerima');
-    $this->db->order_by('date_create', 'DESC');
+    $this->db->join('pengirim', 'pesanan.id_pengirim = pengirim.id_pengirim');
+    $this->db->join('penerima', ', pesanan.id_penerima=penerima.id_penerima');
+    $this->db->order_by('date_created', 'DESC');
     $this->db->where('pesanan', ['id_pesanan' => $id]);
     return $this->db->get()->result_array();
   }

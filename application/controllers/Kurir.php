@@ -119,7 +119,4 @@ class Kurir extends CI_Controller
       }
     }
   }
-  public function changeStatus($id_pesanan)
-  {
-  }
 }
