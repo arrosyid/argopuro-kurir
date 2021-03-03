@@ -89,7 +89,7 @@ class Welcome extends CI_Controller
     $data_pesanan = [
       'id_pengirim' => $id_pengirim,
       'id_penerima' => $id_penerima,
-      'id_pesanan' => uniqid(true),
+      'id_pesanan' => uniqid('ARK', false),
       'keterangan' => htmlspecialchars($this->input->post('ket_barang', true)),
       'harga_barang' => htmlspecialchars($this->input->post('harga', true)),
       // 1 = pending, 2 = proses/dikirim, 3 = diterima kantor, 4 = sukses
@@ -155,7 +155,7 @@ class Welcome extends CI_Controller
       }
     }
 
-    // jika data tidak ditemukan
+    // cara untuk mengambil id penerima atau pengirim
     if ($this->Pesanan_model->insertPesanan($data_pesanan)) {
       //input Pesanan
       $this->session->set_flashdata(

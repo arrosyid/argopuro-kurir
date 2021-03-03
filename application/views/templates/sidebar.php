@@ -32,18 +32,18 @@
             <li class="nav-item">
               <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Grafik</p>
+                <p>Daftar Pengiriman</p>
               </a>
             </li>
           </ul>
-          <ul class="nav nav-treeview">
+          <!-- <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Daftar Pengiriman</p>
               </a>
             </li>
-          </ul>
+          </ul> -->
         </li>
         <li class="nav-header">RESI</li>
         <li class="nav-item has-treeview">

@@ -46,7 +46,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control" name="no_pengirim" id="no_pengirim" placeholder="Isi Nomor HP Pengirim">
+                <input type="number" class="form-control" name="no_pengirim" id="no_pengirim" placeholder="Isi Nomor HP Pengirim">
               </div>
             </div>
           </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control" name="no_rek" id="no_rek" placeholder="Isi No. Rekening Jika Butuh Ditalangi">
+                <input type="number" class="form-control" name="no_rek" id="no_rek" placeholder="Isi No. Rekening Jika Butuh Ditalangi">
               </div>
             </div>
           </div>
@@ -108,7 +108,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control" name="no_penerima" id="no_penerima" placeholder="Isi Nomor HP Penerima">
+                <input type="number" class="form-control" name="no_penerima" id="no_penerima" placeholder="Isi Nomor HP Penerima">
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control" name="harga" id="harga" placeholder="Isi Harga Barang Dalam Paket">
+                <input type="number" class="form-control" name="harga" id="harga" placeholder="Isi Harga Barang Dalam Paket">
               </div>
             </div>
           </div>

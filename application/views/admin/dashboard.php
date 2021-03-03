@@ -2,9 +2,9 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row mb-2">
-      <div class="col-sm-6">
-        <!-- Default box -->
-        <?php foreach ($resi as $r) : ?>
+      <?php foreach ($resi as $r) : ?>
+        <div class="col-sm-6">
+          <!-- Default box -->
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Title</h3>
@@ -64,10 +64,10 @@
                 <a href="<?= $r != null ? base_url('kurir/struck/' . $r['id_pesanan']) : '#' ?>" class="btn btn-primary float-right">Detail</a>
             </div>
           </div>
-        <?php endforeach ?>
-        <!-- /.card -->
-      </div>
-      <!-- /.coloumn -->
+          <!-- /.card -->
+        </div>
+        <!-- /.coloumn -->
+      <?php endforeach ?>
     </div>
     <!-- /.row -->
   </div>
