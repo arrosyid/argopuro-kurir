@@ -42,7 +42,26 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <a href="<?= $r != null ? base_url('kurir/struck/' . $r['id_pesanan']) : '#' ?>" class="btn btn-primary float-right">Detail</a>
+              <?php if ($title == 'Dashboard' and $r != null) : ?>
+                <Strong>status : <?php switch ($r['status']) {
+                                    case 1:
+                                      echo 'Pending';
+                                      break;
+                                    case 2:
+                                      echo 'Diterima Kantor';
+                                      break;
+                                    case 3:
+                                      echo 'Dalam Pengiriman';
+                                      break;
+                                    case 4:
+                                      echo 'Pengiriman Sukses';
+                                      break;
+                                    default:
+                                      null;
+                                  }
+                                  echo '</Strong>';
+                                endif; ?>
+                <a href="<?= $r != null ? base_url('kurir/struck/' . $r['id_pesanan']) : '#' ?>" class="btn btn-primary float-right">Detail</a>
             </div>
           </div>
         <?php endforeach ?>

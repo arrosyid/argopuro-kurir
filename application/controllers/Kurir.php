@@ -90,29 +90,33 @@ class Kurir extends CI_Controller
           $data['subtitle'] = 'Pengiriman Telah Sukses';
       }
     }
-    $this->load->view('templates/admin_header', $data);
-    $this->load->view('templates/sidebar', $data);
-    $this->load->view('admin/struck_kurir');
-    $this->load->view('templates/admin_footer');
+    $this->form_validation->set_rules('changeStatus', 'Ubah Status', 'required|trim');
 
-    $data_status = [
-      'status' => $this->input->post('changeStatus', true)
-    ];
-    if ($this->Pesanan_model->updatePesananById(1, $id_pesanan, $data_status)) {
-      //input Pesanan
-      $this->session->set_flashdata(
-        'message',
-        '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Berhasil Mengubah Status Pesanan</div>'
-      );
-      redirect('kurir/struck');
+    if ($this->form_validation->run() == FALSE) {
+      $this->load->view('templates/admin_header', $data);
+      $this->load->view('templates/sidebar', $data);
+      $this->load->view('admin/struck_kurir');
+      $this->load->view('templates/admin_footer');
     } else {
-      $this->session->set_flashdata(
-        'message',
-        '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Gagal Mengubah Status Pesanan</div>'
-      );
-      redirect('kurir');
+      $data_status = [
+        'status' => $this->input->post('changeStatus', true)
+      ];
+      if ($this->Pesanan_model->updatePesananById(1, $id_pesanan, $data_status)) {
+        //input Pesanan
+        $this->session->set_flashdata(
+          'message',
+          '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            Berhasil Mengubah Status Pesanan</div>'
+        );
+        redirect('kurir');
+      } else {
+        $this->session->set_flashdata(
+          'message',
+          '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            Gagal Mengubah Status Pesanan</div>'
+        );
+        redirect('kurir');
+      }
     }
   }
   public function changeStatus($id_pesanan)
