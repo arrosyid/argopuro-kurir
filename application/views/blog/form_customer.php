@@ -24,7 +24,7 @@
             <div class="col-sm-10">
               <div class="form-group">
                 <input type="hidden" class="form-control" name="id_pengirim" id="id_pengirim">
-                <input type="text" class="form-control" name="nm_pengirim" id="nm_pengirim" placeholder="Isi Nama Pengirim">
+                <input type="text" class="form-control" name="nm_pengirim" id="nm_pengirim" placeholder="Isi Nama Pengirim" value="<?= $simpanDataPengirim == null ? '' : $simpanDataPengirim['nm_pengirim'] ?>">
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control" name="alamat_pengirim" id="alamat_pengirim" placeholder="Isi Alamat Pengirim">
+                <input type="text" class="form-control" name="alamat_pengirim" id="alamat_pengirim" placeholder="Isi Alamat Pengirim" value="<?= $simpanDataPengirim == null ? '' : $simpanDataPengirim['alamat_pengirim'] ?>">
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="number" class="form-control" name="no_pengirim" id="no_pengirim" placeholder="Isi Nomor HP Pengirim">
+                <input type="number" class="form-control" name="no_pengirim" id="no_pengirim" placeholder="Isi Nomor HP Pengirim" value="<?= $simpanDataPengirim == null ? '' : $simpanDataPengirim['no_HP_pengirim'] ?>">
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control" name="ancer_pengirim" id="ancer_pengirim" placeholder="Isi Ancer-Ancer Alamat Pengirim">
+                <input type="text" class="form-control" name="ancer_pengirim" id="ancer_pengirim" placeholder="Isi Ancer-Ancer Alamat Pengirim" value="<?= $simpanDataPengirim == null ? '' : $simpanDataPengirim['ket_alamat_pengirim'] ?>">
               </div>
             </div>
           </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="number" class="form-control" name="no_rek" id="no_rek" placeholder="Isi No. Rekening Jika Butuh Ditalangi">
+                <input type="number" class="form-control" name="no_rek" id="no_rek" placeholder="Isi No. Rekening Jika Butuh Ditalangi" value="<?= $simpanDataPengirim == null ? '' : $simpanDataPengirim['no_rek'] ?>">
               </div>
             </div>
           </div>
