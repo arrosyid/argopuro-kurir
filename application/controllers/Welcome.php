@@ -63,28 +63,29 @@ class Welcome extends CI_Controller
       if ($nama_pengirim == $data['pengirim']['nm_pengirim'] and $no_hp_pengirim == $data['pengirim']['no_HP_pengirim']) {
         // jika sudah ada
         $this->session->set_flashdata(
-          'message1',
+          'message',
           '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     Data Sudah terdapat Pada data Pengirim</div>'
         );
-        // redirect('welcome');
+        redirect('welcome/penerima/' . $data['pengirim']['id_pengirim']);
       } else {
         // jika data tidak ditemukan
         if ($this->Pengirim_model->insertPengirim($data_pengirim)) {
           //input Pengirim
           $this->session->set_flashdata(
-            'message1',
+            'message',
             '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
           Berhasil menginputkan data Pengirim</div>'
           );
-          // redirect('welcome');
+          // cara mendapatkan idnya gmna bos?
+          // redirect('welcome/penerima/' . $data['pengirim']['id_pengirim']);
         } else {
           $this->session->set_flashdata(
-            'message1',
+            'message',
             '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
           Gagal menginputkan data Pengirim</div>'
           );
-          // redirect('welcome');
+          redirect('welcome/pengirim');
         }
       }
     }
@@ -108,7 +109,6 @@ class Welcome extends CI_Controller
       $nama_penerima = htmlspecialchars($this->input->post('nm_penerima', true));
       $no_hp_penerima = htmlspecialchars($this->input->post('no_penerima', true));
       $data['penerima'] = $this->Penerima_model->getPenerimaByNamaNomor($nama_penerima, $no_hp_penerima);
-      // $data['pengirim'] = $this->Pengirim_model->getPengirimById($id_pengirim);
 
       $data_penerima = [
         'nm_penerima' => $nama_penerima,
@@ -125,7 +125,7 @@ class Welcome extends CI_Controller
           '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                       Data Sudah terdapat Pada data Penerima</div>'
         );
-        redirect('welcome/pesanan' . $id_pengirim . '/' . $data['penerima']['id_penerima']);
+        redirect('welcome/pesanan/' . $id_pengirim . '/' . $data['penerima']['id_penerima']);
       } else {
         // jika data tidak ditemukan
         if ($this->Penerima_model->insertPenerima($data_penerima)) {
@@ -135,20 +135,21 @@ class Welcome extends CI_Controller
             '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                       Berhasil menginputkan data Penerima</div>'
           );
-          redirect('welcome/pesanan' . $id_pengirim . '/' . $data['penerima']['id_penerima']);
+          // cara dapat idnya gmna boss?
+          // redirect('welcome/pesanan/' . $id_pengirim . '/' . $data['penerima']['id_penerima']);
         } else {
           $this->session->set_flashdata(
             'message',
             '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                       Gagal menginputkan data Penerima</div>'
           );
-          redirect('welcome/pesanan' . $id_pengirim . '/' . $data['penerima']['id_penerima']);
+          redirect('welcome/penerima/' . $id_pengirim);
         }
       }
     }
   }
 
-  public function Pesanan($id_pengirim, $id_penerima)
+  public function Pesanan($id_pengirim = null, $id_penerima = null)
   {
     //rules form validation deskripsi (pesanan)
     $this->form_validation->set_rules('ket_barang', 'Keterangan Barang', 'required|trim');
@@ -167,7 +168,7 @@ class Welcome extends CI_Controller
       $data_pesanan = [
         'id_pengirim' => $id_pengirim,
         'id_penerima' => $id_penerima,
-        'id_pesanan' => uniqid('ARK', false),
+        'id_pesanan' => htmlspecialchars($this->input->post('nomor_resi', true)),
         'keterangan' => htmlspecialchars($this->input->post('ket_barang', true)),
         'harga_barang' => htmlspecialchars($this->input->post('harga', true)),
         // 1 = pending, 2 = proses/dikirim, 3 = diterima kantor, 4 = sukses
