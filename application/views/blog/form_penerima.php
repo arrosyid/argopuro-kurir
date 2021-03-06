@@ -21,7 +21,6 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="hidden" class="form-control" name="id_penerima" id="id_penerima">
                 <input type="text" class="form-control" name="nm_penerima" id="nm_penerima" placeholder="Isi Nama Penerima">
               </div>
             </div>

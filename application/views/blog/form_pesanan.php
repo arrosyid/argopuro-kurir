@@ -12,6 +12,53 @@
         <form role="form" action="" method="POST">
           <!-- section -->
           <div class="mb-3">
+            <strong>Pengirim</strong>
+          </div>
+          <div class="row">
+            <div class="col-5">
+              <label>Nama</label>
+            </div>
+            <div class="col-7">
+              <div class="form-group">
+                <p>Sayla</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-5">
+              <label>alamat</label>
+            </div>
+            <div class="col-7">
+              <div class="form-group">
+                <p>jember</p>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <strong>Penerima</strong>
+          </div>
+          <div class="row">
+            <div class="col-5">
+              <label>Nama</label>
+            </div>
+            <div class="col-7">
+              <div class="form-group">
+                <p>Sayla</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-5">
+              <label>alamat</label>
+            </div>
+            <div class="col-7">
+              <div class="form-group">
+                <p>jember</p>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="mb-3">
             <strong>Deskripsi</strong>
           </div>
           <!-- isi section -->
@@ -21,7 +68,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control" name="nomor_resi" id="nomor_resi" value="Nomor Resi" disabled>
+                <input type="text" class="form-control" name="nomor_resi" id="nomor_resi" value="<?= uniqid('ARK') ?>" disabled>
               </div>
             </div>
           </div>
