@@ -203,7 +203,7 @@ class Welcome extends CI_Controller
     } else
       $data['resi'] = $this->Pesanan_model->getPesananById($id_pesanan);
     $this->load->view('templates/blog_header');
-    $this->load->view('blog/struck');
+    $this->load->view('blog/struck', $data);
     $this->load->view('templates/blog_footer');
   }
 }

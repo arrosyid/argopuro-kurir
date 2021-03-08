@@ -85,19 +85,23 @@
       <div class="col-6">
         status :
         <?php
-        switch ($resi['status']) {
-          case 1:
-            '<input type="radio" class="form-check-input" checked>pending';
-            break;
-          case 2:
-            '<input type="radio" class="form-check-input" checked>Diterima Kantor';
-            break;
-          case 3:
-            '<input type="radio" class="form-check-input" checked>Dalam Pengiriman';
-            break;
-          case 4:
-            '<input type="radio" class="form-check-input" checked>Pengiriman Sukses';
-            break;
+        if ($resi == null) {
+          echo 'Data Tidak Ditemukan';
+        } else {
+          switch ($resi['status']) {
+            case 1:
+              '<input type="radio" class="form-check-input" checked>pending';
+              break;
+            case 2:
+              '<input type="radio" class="form-check-input" checked>Diterima Kantor';
+              break;
+            case 3:
+              '<input type="radio" class="form-check-input" checked>Dalam Pengiriman';
+              break;
+            case 4:
+              '<input type="radio" class="form-check-input" checked>Pengiriman Sukses';
+              break;
+          }
         }
         ?>
       </div>
