@@ -6,10 +6,12 @@ class Welcome extends CI_Controller
 
   // kekurangan:
   // inputan per page
-  // tampilan struck
   // cegah duplikasi database
   // sidebar dalam proses dan diterima kantor
   // barcode
+  // terdapat 2 cara untuk mendapat id :
+    // pertama kirim nomer HP dengan hash pada redirect
+    // kedua count database dan jadikan id lalu kirim
 
 
   public function __construct()
@@ -67,7 +69,7 @@ class Welcome extends CI_Controller
           '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     Data Sudah terdapat Pada data Pengirim</div>'
         );
-        redirect('welcome/penerima/' . $data['pengirim']['id_pengirim']);
+        redirect('welcome/penerima/' . $data['pengirim']['no_HP_pengirim']);
       } else {
         // jika data tidak ditemukan
         if ($this->Pengirim_model->insertPengirim($data_pengirim)) {
@@ -136,7 +138,7 @@ class Welcome extends CI_Controller
                       Berhasil menginputkan data Penerima</div>'
           );
           // cara dapat idnya gmna boss?
-          // redirect('welcome/pesanan/' . $id_pengirim . '/' . $data['penerima']['id_penerima']);
+          redirect('welcome/pesanan/' . $id_pengirim . '/' . $data['penerima']['id_penerima']);
         } else {
           $this->session->set_flashdata(
             'message',

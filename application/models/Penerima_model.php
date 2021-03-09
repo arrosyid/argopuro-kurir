@@ -19,6 +19,10 @@ class Penerima_model extends CI_Model
   {
     return $this->db->get('penerima', ['nama' => $nama] and ['nomor' => $nomor])->row_array();
   }
+  public function getPenerimaByNomor($nomor)
+  {
+    return $this->db->get('penerima', ['nomor' => $nomor])->row_array();
+  }
 
   public function insertPenerima($data_Penerima)
   {
