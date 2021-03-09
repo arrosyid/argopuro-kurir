@@ -35,9 +35,9 @@ class Pesanan_model extends CI_Model
   {
     return $this->db->get('awal_pesanan', ['id_pesanan' => $id])->row_array();
   }
-  public function insertPesanan($data_Pesanan)
+  public function insertPesanan($data_pengirim, $data_Pesanan)
   {
-    return $this->db->insert('awal_pesanan', $data_Pesanan);
+    return $this->db->insert('awal_pesanan', $data_pengirim, $data_Pesanan);
   }
   // delete Pesanan with type by id
   public function deletePesananById($param = null)

@@ -13,8 +13,6 @@ class Welcome extends CI_Controller
   {
     parent::__construct();
     verified_access(true);
-    $this->load->model('Pengirim_model');
-    $this->load->model('Penerima_model');
     $this->load->model('Pesanan_model');
   }
 
@@ -48,20 +46,10 @@ class Welcome extends CI_Controller
     } else {
       // simpan inputan penerima pada session
 
-      // variable untuk input dan cek double data
-      $nama_pengirim = htmlspecialchars($this->input->post('nm_pengirim', true));
-      $no_hp_pengirim = htmlspecialchars($this->input->post('no_pengirim', true));
-
-      $nama_penerima = htmlspecialchars($this->input->post('nm_penerima', true));
-      $no_hp_penerima = htmlspecialchars($this->input->post('no_penerima', true));
-
-      // $data['pengirim'] = $this->Pengirim_model->getPengirimByNamaNomor($nama_pengirim, $no_hp_pengirim);
-      // $data['penerima'] = $this->Penerima_model->getPenerimaByNamaNomor($nama_penerima, $no_hp_penerima);
-
       $data_pengirim = [
-        'nm_pengirim' => $nama_pengirim,
+        'nm_pengirim' => htmlspecialchars($this->input->post('nm_pengirim', true)),
         'alamat_pengirim' => htmlspecialchars($this->input->post('alamat_pengirim', true)),
-        'no_HP_pengirim' => $no_hp_pengirim,
+        'no_HP_pengirim' => htmlspecialchars($this->input->post('no_pengirim', true)),
         'ket_alamat_pengirim' => htmlspecialchars($this->input->post('ancer_pengirim', true)),
         'no_rek' => htmlspecialchars($this->input->post('no_rek', true))
       ];
@@ -70,14 +58,12 @@ class Welcome extends CI_Controller
       // var_dump($data['simpanDataPengirim']);
       // die;
 
-      $data_penerima = [
-        'nm_penerima' => $nama_penerima,
-        'alamat_penerima' => htmlspecialchars($this->input->post('alamat_penerima', true)),
-        'no_HP_penerima' => $no_hp_penerima,
-        'ket_alamat_penerima' => htmlspecialchars($this->input->post('ancer_penerima', true))
-      ];
       $data_pesanan = [
-        'id_pesanan' => uniqid('ARK', false),
+        'id_pesanan' => htmlspecialchars($this->input->post('id_pesanan', true)),
+        'nm_penerima' => htmlspecialchars($this->input->post('nm_penerima', true)),
+        'alamat_penerima' => htmlspecialchars($this->input->post('alamat_penerima', true)),
+        'no_HP_penerima' => htmlspecialchars($this->input->post('no_penerima', true)),
+        'ket_alamat_penerima' => htmlspecialchars($this->input->post('ancer_penerima', true)),
         'keterangan' => htmlspecialchars($this->input->post('ket_barang', true)),
         'harga_barang' => htmlspecialchars($this->input->post('harga', true)),
         // 1 = pending, 2 = proses/dikirim, 3 = diterima kantor, 4 = sukses
@@ -85,8 +71,7 @@ class Welcome extends CI_Controller
         'date_created' => time()
       ];
 
-      // cara untuk mengambil id penerima atau pengirim
-      if ($this->Pesanan_model->insertData($data_pengirim, $data_penerima, $data_pesanan)) {
+      if ($this->Pesanan_model->insertData($data_pengirim, $data_pesanan)) {
         //input Pesanan
         $this->session->set_flashdata(
           'message3',
