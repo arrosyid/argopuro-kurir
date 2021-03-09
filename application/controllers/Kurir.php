@@ -30,6 +30,18 @@ class Kurir extends CI_Controller
     $this->load->view('admin/dashboard');
     $this->load->view('templates/admin_footer');
   }
+  public function pending()
+  {
+    $data['title'] = 'pending';
+    $data['subtitle'] = 'Resi Yang masih berada di customer/pengirim';
+    $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
+    $data['resi'] = $this->Pesanan_model->getAllPesanan('pending');
+
+    $this->load->view('templates/admin_header', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('admin/dashboard');
+    $this->load->view('templates/admin_footer');
+  }
   public function process()
   {
     $data['title'] = 'Dalam Proses';

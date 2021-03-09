@@ -47,6 +47,13 @@
         </li>
         <li class="nav-header">RESI</li>
         <li class="nav-item has-treeview">
+          <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir/pending') ?>" class="nav-link 
+                    <?php if ($title == 'pending') echo 'active'; ?>">
+            <i class="nav-icon far fa-clock"></i>
+            <p>pending</p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview">
           <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir/process') ?>" class="nav-link 
                     <?php if ($title == 'Dalam Proses') echo 'active'; ?>">
             <i class="nav-icon fas fa-paper-plane"></i>
