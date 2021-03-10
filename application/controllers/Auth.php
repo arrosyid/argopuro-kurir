@@ -5,10 +5,7 @@ class Auth extends CI_Controller
 {
 
   // task list:
-  // user models
-  // multiuser login -> dipertanyakan
   // captcha in registrasi
-  // testing
 
   public function __construct()
   {

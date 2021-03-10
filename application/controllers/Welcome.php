@@ -5,8 +5,6 @@ class Welcome extends CI_Controller
 {
 
   // kekurangan:
-  // mengambil id pengirim dan penerima
-  // memasukkan id pengirim dan penerima jika baru
 
 
   public function __construct()
@@ -44,7 +42,6 @@ class Welcome extends CI_Controller
       $this->load->view('blog/form_customer', $data);
       $this->load->view('templates/blog_footer');
     } else {
-      // simpan inputan penerima pada session
 
       $data_pengirim = [
         'nm_pengirim' => htmlspecialchars($this->input->post('nm_pengirim', true)),
@@ -53,35 +50,40 @@ class Welcome extends CI_Controller
         'ket_alamat_pengirim' => htmlspecialchars($this->input->post('ancer_pengirim', true)),
         'no_rek' => htmlspecialchars($this->input->post('no_rek', true))
       ];
+      // dihapus sessionnya dulu
+      $this->session->unset_userdata($data_pengirim);
       // menyimpan data pada session
       $this->session->set_userdata($data_pengirim);
       // var_dump($data['simpanDataPengirim']);
       // die;
 
       $data_pesanan = [
-        'id_pesanan' => htmlspecialchars($this->input->post('id_pesanan', true)),
+        'id_pesanan' => htmlspecialchars($this->input->post('id', true)),
         'nm_penerima' => htmlspecialchars($this->input->post('nm_penerima', true)),
         'alamat_penerima' => htmlspecialchars($this->input->post('alamat_penerima', true)),
         'no_HP_penerima' => htmlspecialchars($this->input->post('no_penerima', true)),
         'ket_alamat_penerima' => htmlspecialchars($this->input->post('ancer_penerima', true)),
-        'keterangan' => htmlspecialchars($this->input->post('ket_barang', true)),
+        'ket_barang' => htmlspecialchars($this->input->post('ket_barang', true)),
         'harga_barang' => htmlspecialchars($this->input->post('harga', true)),
         // 1 = pending, 2 = proses/dikirim, 3 = diterima kantor, 4 = sukses
+        'onkir' => 6000,
         'status' => 1,
         'date_created' => time()
       ];
+      // var_dump($data_pesanan);
+      // die;
 
-      if ($this->Pesanan_model->insertData($data_pengirim, $data_pesanan)) {
+      if ($this->Pesanan_model->insertPesanan($data_pengirim + $data_pesanan)) {
         //input Pesanan
         $this->session->set_flashdata(
-          'message3',
+          'message',
           '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                       Berhasil menginputkan data Pesanan</div>'
         );
         redirect('welcome');
       } else {
         $this->session->set_flashdata(
-          'message3',
+          'message',
           '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                       Gagal menginputkan data Pesanan</div>'
         );
@@ -95,8 +97,9 @@ class Welcome extends CI_Controller
       $data['resi'] = null;
     } else
       $data['resi'] = $this->Pesanan_model->getPesananById($id_pesanan);
+    // var_dump($data['resi']);
     $this->load->view('templates/blog_header');
-    $this->load->view('blog/struck');
+    $this->load->view('blog/struck', $data);
     $this->load->view('templates/blog_footer');
   }
 }

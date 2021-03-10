@@ -16,7 +16,6 @@ class Kurir extends CI_Controller
     $this->load->model('Pesanan_model');
     // $this->load->helper('captcha');
   }
-  // edit fungsi untuk daftar koperasi
 
   public function index()
   {

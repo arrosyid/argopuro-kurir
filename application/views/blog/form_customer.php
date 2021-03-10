@@ -21,7 +21,6 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="hidden" class="form-control" name="id_pengirim" id="id_pengirim">
                 <input type="text" class="form-control" name="nm_pengirim" id="nm_pengirim" placeholder="Isi Nama Pengirim" value="<?= $simpanDataPengirim == null ? '' : $simpanDataPengirim['nm_pengirim'] ?>">
               </div>
             </div>
@@ -83,7 +82,6 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="hidden" class="form-control" name="id_penerima" id="id_penerima">
                 <input type="text" class="form-control" name="nm_penerima" id="nm_penerima" placeholder="Isi Nama Penerima">
               </div>
             </div>
@@ -134,7 +132,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control" name="id_pesanan" id="id_pesanan" value="<?= uniqid('ARK', false) ?>" disabled>
+                <input type="text" class="form-control" name="id" id="id" value="<?= uniqid("ARK", false) ?>"readonly >
               </div>
             </div>
           </div>

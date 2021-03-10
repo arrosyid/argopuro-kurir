@@ -69,7 +69,7 @@
               <h5>DESKRIPSI PENGIRIMAN</h5>
               <div class="row">
                 <div class="col-4">KETERANGAN BARANG</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['keterangan'] ?></div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['ket_barang'] ?></div>
               </div>
               <div class="row">
                 <div class="col-4">HARGA BARANG</div>

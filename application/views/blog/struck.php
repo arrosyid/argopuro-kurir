@@ -73,39 +73,46 @@
               </div>
               <div class="row">
                 <div class="col-4">HARGA BARANG</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : 'Rp. ' . number_format($resi['harga'], 0, ',', '.') ?></div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : 'Rp. ' . number_format($resi['harga_barang'], 0, ',', '.') ?></div>
+              </div>
+              <div class="row">
+                <div class="col-4">ONKIR</div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : 'Rp. ' . number_format($resi['onkir'], 0, ',', '.') ?></div>
+              </div>
+              <div class="row">
+                <div class="col-4">STATUS</div>
+                <div class="col-7"><?php
+                                    if ($resi == null) {
+                                      echo 'Data Tidak Ditemukan';
+                                    } else {
+                                      switch ($resi['status']) {
+                                        case 1:
+                                          echo 'pending';
+                                          break;
+                                        case 2:
+                                          echo 'Diterima Kantor';
+                                          break;
+                                        case 3:
+                                          echo 'Dalam Pengiriman';
+                                          break;
+                                        case 4:
+                                          echo 'Pengiriman Sukses';
+                                          break;
+                                      }
+                                    }
+                                    ?>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">JENIS ANTAR</div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : ($resi['jenis_antar'] == 'E' ? 'EKSPEDISI' : 'EKSPRESS') ?></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <hr>
-    <div class="row">
-      <div class="col-6">
-        status :
-        <?php
-        if ($resi == null) {
-          echo 'Data Tidak Ditemukan';
-        } else {
-          switch ($resi['status']) {
-            case 1:
-              '<input type="radio" class="form-check-input" checked>pending';
-              break;
-            case 2:
-              '<input type="radio" class="form-check-input" checked>Diterima Kantor';
-              break;
-            case 3:
-              '<input type="radio" class="form-check-input" checked>Dalam Pengiriman';
-              break;
-            case 4:
-              '<input type="radio" class="form-check-input" checked>Pengiriman Sukses';
-              break;
-          }
-        }
-        ?>
-      </div>
-    </div>
+
   </div>
   <!-- /.card-body -->
 </section>
