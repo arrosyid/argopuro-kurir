@@ -17,7 +17,7 @@
                 <img src="<?= base_url() ?>assets/img/logo.png" alt="logo argopuro kurir" class="img-fluid" width="60%">
               </div>
               <div class="card col-6">
-                barcode
+                <?= $resi == null ? 'Data Tidak Ditemukan' : $resi['id_pesanan'] ?>
               </div>
             </div><br>
             <!-- /.logo & barcode-->

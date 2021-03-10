@@ -17,7 +17,9 @@
                 <img src="<?= base_url() ?>assets/img/logo.png" alt="logo argopuro kurir" class="img-fluid" width="60%">
               </div>
               <div class="card col-6">
-                barcode
+                <p class="text-center">
+                  <?= $resi == null ? 'Data Tidak Ditemukan' : $resi['id_pesanan'] ?>
+                </p>
               </div>
             </div><br>
             <!-- /.logo & barcode-->
@@ -74,6 +76,14 @@
               <div class="row">
                 <div class="col-4">HARGA BARANG</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : "Rp. " . number_format($resi['harga_barang'], 0, ',', '.') ?></div>
+              </div>
+              <div class="row">
+                <div class="col-4">BIAYA ONKIR</div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : 'Rp. ' . number_format($resi['onkir'], 0, ',', '.') ?></div>
+              </div>
+              <div class="row">
+                <div class="col-4">JENIS ANTAR</div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : ($resi['jenis_antar'] == 'E' ? 'EKSPEDISI' : 'EKSPRESS') ?></div>
               </div>
             </div>
           </div>

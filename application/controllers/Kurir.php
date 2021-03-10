@@ -86,7 +86,7 @@ class Kurir extends CI_Controller
       $data['subtitle'] = 'Resi telah terhapus atau tidak ada dalam database';
     } else {
       $data['resi'] = $this->Pesanan_model->getPesananById($id_pesanan);
-      $data['title'] = 'Resi' . $data['resi']['nm_pengirim'];
+      $data['title'] = 'Resi ' . $data['resi']['nm_pengirim'];
       switch ($data['resi']['status']) {
         case 1:
           $data['subtitle'] = 'Resi Dipending';
