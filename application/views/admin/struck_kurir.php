@@ -75,15 +75,21 @@
               </div>
               <div class="row">
                 <div class="col-4">HARGA BARANG</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : "Rp. " . number_format($resi['harga_barang'], 0, ',', '.') ?></div>
+                <div class="col-7">
+                  <?= $resi == null ? 'Data Tidak Ditemukan' : "Rp. " . number_format($resi['harga_barang'], 0, ',', '.') ?>
+                </div>
               </div>
               <div class="row">
                 <div class="col-4">BIAYA ONKIR</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : 'Rp. ' . number_format($resi['onkir'], 0, ',', '.') ?></div>
+                <div class="col-7">
+                  <?= $resi == null ? 'Data Tidak Ditemukan' : 'Rp. ' . number_format($resi['onkir'], 0, ',', '.') ?>
+                </div>
               </div>
               <div class="row">
                 <div class="col-4">JENIS ANTAR</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : ($resi['jenis_antar'] == 'E' ? 'EKSPEDISI' : 'EKSPRESS') ?></div>
+                <div class="col-7">
+                  <?= $resi == null ? 'Data Tidak Ditemukan' : ($resi['jenis_antar'] == 'E' ? 'EKSPEDISI' : 'EKSPRESS') ?>
+                </div>
               </div>
             </div>
           </div>
@@ -117,6 +123,9 @@
             </div>
           </div>
           <div class="col-6 text-right">
+            <a href="https://api.whatsapp.com/send?phone=<?= $resi['no_HP_pengirim']; ?>&text=Customer%20yang%20terhormat,%20Pengiriman%20anda%20<?= ($resi['status'] == 1 ? 'Sedang Dipending' : ($resi['status'] == 2 ? 'Telah Diterima Kantor' : ($resi['status'] == 3 ? 'Dalam Pengiriman' : ($resi['status'] == 4 ? 'Telah Sukses diterima' : '')))); ?>%20silahkan%20Cek%20Resi%20Anda%20Dilink%20berikut%20ini,%20terima kasih. <?= base_url('welcome/struck/' . $resi['id_pesanan']) ?>" class="btn btn-success btn-round" role="buttton" data-toggle="tooltip" data-placement="top" title="Kirim WA" target="_blank">
+              Kirim WA
+            </a>
             <button type="submit" class="btn btn-primary">KONFIRMASI</button>
           </div>
         </div>
