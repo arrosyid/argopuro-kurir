@@ -67,6 +67,7 @@ class Welcome extends CI_Controller
         'harga_barang' => htmlspecialchars($this->input->post('harga', true)),
         // 1 = pending, 2 = proses/dikirim, 3 = diterima kantor, 4 = sukses
         'onkir' => 6000,
+        'jenis_antar' => "E",
         'status' => 1,
         'date_created' => time()
       ];

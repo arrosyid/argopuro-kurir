@@ -6,7 +6,7 @@
         <h5 class="card-title">RESI PENGIRIMAN BARANG</h5>
       </div>
       <!-- /.card-header -->
-
+      <!-- input type radio tidak bisa -->
       <div class="card-body">
         <div class="row">
           <?= $this->session->flashdata('massage'); ?>

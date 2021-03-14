@@ -10,7 +10,7 @@
               <h3 class="card-title">Title</h3>
 
               <div class="card-tools">
-                <a href="<?= $r != null ? base_url('kurir/struck/' . $r['id_pesanan']) : '#' ?>" class="btn btn-tool" data-toggle="tooltip" title="Detail">
+                <a href="<?= base_url('kurir/struck/' . $r['id_pesanan']) ?>" class="btn btn-tool" data-toggle="tooltip" title="Detail">
                   <i class="fas fa-share-square"></i></a>
               </div>
             </div>
@@ -61,7 +61,7 @@
                                   }
                                   echo '</Strong>';
                                 endif; ?>
-                <a href="<?= $r != null ? base_url('kurir/struck/' . $r['id_pesanan']) : '#' ?>" class="btn btn-primary float-right">Detail</a>
+                <a href="<?= base_url('kurir/struck/' . $r['id_pesanan']) ?>" class="btn btn-primary float-right">Detail</a>
             </div>
           </div>
           <!-- /.card -->
