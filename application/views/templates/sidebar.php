@@ -54,17 +54,17 @@
           </a>
         </li>
         <li class="nav-item has-treeview">
-          <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir/process') ?>" class="nav-link 
-                    <?php if ($title == 'Dalam Proses') echo 'active'; ?>">
-            <i class="nav-icon fas fa-paper-plane"></i>
-            <p>Dalam Proses</p>
-          </a>
-        </li>
-        <li class="nav-item has-treeview">
           <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir/sent') ?>" class="nav-link 
                     <?php if ($title == 'Diterima Kantor') echo 'active'; ?>">
             <i class="nav-icon fas fa-truck-loading"></i>
             <p>Diterima Kantor</p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="<?= $user['level'] == 1 ? base_url('admin') : base_url('kurir/process') ?>" class="nav-link 
+                    <?php if ($title == 'Dalam Proses') echo 'active'; ?>">
+            <i class="nav-icon fas fa-paper-plane"></i>
+            <p>Dalam Proses</p>
           </a>
         </li>
         <li class="nav-item has-treeview">

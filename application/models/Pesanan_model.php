@@ -15,12 +15,12 @@ class Pesanan_model extends CI_Model
       $this->db->order_by('date_created', 'DESC');
       return $this->db->get()->result_array();
     }
-    if ($type == 'proses') {
+    if ($type == 'diterima') {
       $this->db->select("*")->from('awal_pesanan')->where('status = 2');
       $this->db->order_by('date_created', 'DESC');
       return $this->db->get()->result_array();
     }
-    if ($type == 'diterima') {
+    if ($type == 'proses') {
       $this->db->select("*")->from('awal_pesanan')->where('status = 3');
       $this->db->order_by('date_created', 'DESC');
       return $this->db->get()->result_array();
