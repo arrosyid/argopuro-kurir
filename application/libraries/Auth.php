@@ -3,7 +3,7 @@
 if (!function_exists('test_method')) {
   class Auth
   {
-    function verified_access($public = false)
+    public function verified_access($public = false)
     {
       // menampung sesi login level user
       $level = null;
