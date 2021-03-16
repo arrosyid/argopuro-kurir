@@ -10,7 +10,7 @@ class Welcome extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    (new Auth)->verified_access(true);
+    (new ion_Auth)->verified_access(true);
     $this->load->model('Pesanan_model');
   }
 
