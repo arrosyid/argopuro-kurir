@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 if (!function_exists('test_method')) {
-  class ion_Auth
+  class Ion_auth
   {
     public function verified_access($public = false)
     {
