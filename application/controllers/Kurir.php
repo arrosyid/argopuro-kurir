@@ -9,7 +9,7 @@ class Kurir extends CI_Controller
     parent::__construct();
     //untuk memverifikasi sesi login
     if ($this->session->userdata('level') != 2) {
-      (new Ion_auth)->verified_access(false);
+      (new Ionauth)->verified_access(false);
     }
     $this->load->model('User_model');
     $this->load->model('Token_model');

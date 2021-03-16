@@ -19,7 +19,7 @@ class Auth extends CI_Controller
   public function index()
   {
     //untuk memverifikasi sesi login
-    (new Ion_auth)->verified_access(true);
+    (new Ionauth)->verified_access(true);
 
     //validation rules
     $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
@@ -85,7 +85,7 @@ class Auth extends CI_Controller
   public function registrasi()
   {
     //untuk memverifikasi sesi login
-    (new Ion_auth)->verified_access(true);
+    (new Ionauth)->verified_access(true);
 
     //validation rules
     $this->form_validation->set_rules('name', 'Name', 'required|trim');
