@@ -80,6 +80,12 @@
                 </div>
               </div>
               <div class="row">
+                <div class="col-4">BERAT BARANG</div>
+                <div class="col-7">
+                  <?= $resi == null ? 'Data Tidak Ditemukan' : 'Rp. ' . number_format($resi['berat_barang'], 0, ',', '.') ?>
+                </div>
+              </div>
+              <div class="row">
                 <div class="col-4">BIAYA ONKIR</div>
                 <div class="col-7">
                   <?= $resi == null ? 'Data Tidak Ditemukan' : 'Rp. ' . number_format($resi['onkir'], 0, ',', '.') ?>

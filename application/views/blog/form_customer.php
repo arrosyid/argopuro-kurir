@@ -132,7 +132,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control" name="id" id="id" value="<?= uniqid("ARK", false) ?>"readonly >
+                <input type="text" class="form-control" name="id" id="id" value="<?= uniqid("ARK", false) ?>" readonly>
               </div>
             </div>
           </div>
@@ -155,6 +155,31 @@
             <div class="col-sm-10">
               <div class="form-group">
                 <input type="number" class="form-control" name="harga" id="harga" placeholder="Isi Harga Barang Dalam Paket">
+              </div>
+            </div>
+          </div>
+          <?= form_error('harga', '<small class="text-danger pl-3">', '</small>'); ?>
+          <div class="row">
+            <div class="col-sm-2">
+              <label>Berat Barang</label>
+            </div>
+            <div class="col-8">
+              <div class="form-group">
+                <input type="number" class="form-control" name="berat" id="berat" placeholder="Isi Berat Barang/Paket">
+              </div>
+            </div>
+            <div class="col-2">
+              <p class="pt-1">KG</p>
+            </div>
+          </div>
+          <?= form_error('harga', '<small class="text-danger pl-3">', '</small>'); ?>
+          <div class="row">
+            <div class="col-sm-2">
+              <label>Onkir</label>
+            </div>
+            <div class="col-sm-10">
+              <div class="form-group">
+                <input type="number" class="form-control" name="onkir" id="onkir" value="" readonly>
               </div>
             </div>
           </div>
