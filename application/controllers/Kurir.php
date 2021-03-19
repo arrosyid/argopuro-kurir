@@ -23,6 +23,9 @@ class Kurir extends CI_Controller
     $data['subtitle'] = 'Dashboard Kurir';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $data['resi'] = $this->Pesanan_model->getAllPesanan('all data');
+    if (isset($_POST['search'])) {
+      $data['resi'] =  $this->Pesanan_model->getPesananByKeyword($this->input->post('keyword'));
+    }
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);

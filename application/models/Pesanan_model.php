@@ -39,6 +39,20 @@ class Pesanan_model extends CI_Model
   {
     return $this->db->insert('awal_pesanan', $data_Pesanan);
   }
+  // fungsi untuk get post by parameter
+  public function getPesananByKeyword($keyword)
+  {
+    $this->db->like('id_pesanan', $keyword);
+    $this->db->or_like('nm_pengirim', $keyword);
+    $this->db->or_like('alamat_pengirim', $keyword);
+    $this->db->or_like('no_HP_pengirim', $keyword);
+    $this->db->or_like('nm_penerima', $keyword);
+    $this->db->or_like('alamat_penerima', $keyword);
+    $this->db->or_like('no_HP_penerima', $keyword);
+    $this->db->or_like('ket_barang', $keyword);
+    $this->db->order_by('date_created', 'DESC');
+    return $this->db->get('awal_pesanan')->result_array();
+  }
   // delete Pesanan with type by id
   public function deletePesananById($param = null)
   {
