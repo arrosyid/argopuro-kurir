@@ -4,9 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Welcome extends CI_Controller
 {
 
-  // kekurangan:
-
-
   public function __construct()
   {
     parent::__construct();
@@ -28,6 +25,7 @@ class Welcome extends CI_Controller
     //rules form validation deskripsi (pesanan)
     $this->form_validation->set_rules('ket_barang', 'Keterangan Barang', 'required|trim');
     $this->form_validation->set_rules('harga', 'Harga', 'required|trim');
+    $this->form_validation->set_rules('berat', 'Berat', 'required|trim');
 
     if ($this->form_validation->run() == FALSE) {
       if ($this->session->userdata('nm_pengirim') == null)
@@ -64,9 +62,11 @@ class Welcome extends CI_Controller
         'ket_alamat_penerima' => htmlspecialchars($this->input->post('ancer_penerima', true)),
         'ket_barang' => htmlspecialchars($this->input->post('ket_barang', true)),
         'harga_barang' => htmlspecialchars($this->input->post('harga', true)),
-        // 1 = pending, 2 = proses/dikirim, 3 = diterima kantor, 4 = sukses
-        'onkir' => 6000,
+        'berat_barang' => htmlspecialchars($this->input->post('berat', true)),
+        'ongkir' => htmlspecialchars($this->input->post('ongkir', true)),
+        // E = ekspedisi, Ex = Express
         'jenis_antar' => "E",
+        // 1 = pending, 2 = proses/dikirim, 3 = diterima kantor, 4 = sukses
         'status' => 1,
         'date_created' => time()
       ];
