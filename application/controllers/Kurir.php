@@ -133,4 +133,20 @@ class Kurir extends CI_Controller
       }
     }
   }
+  public function ajax()
+  {
+    // $ajax_menu = $this->input->get('search');
+
+    // // ajax edit category
+    // if ($ajax_menu == 'search') {
+
+    $keyword = $this->input->get('keyword');
+
+    $data['resi'] = $this->Pesanan_model->getPesananByKeyword($keyword);
+    // var_dump($data['resi']);
+    // die;
+
+    $this->load->view('admin/ajax/search', $data);
+    // }
+  }
 }

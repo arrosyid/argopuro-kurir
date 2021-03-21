@@ -51,7 +51,45 @@
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script>
+  // handling click button search
+  var container = document.getElementById('container');
+  var cari = document.getElementById('search');
+  var keyword = document.getElementById('keyword');
 
+  // cari.style.display = 'none';
+
+  keyword.addEventListener('keyup', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        container.innerHTML = xhr.responseText;
+        // console.log(xhr.responseText);
+      }
+    }
+    xhr.open('get', '<?= base_url('kurir/ajax') ?>?keyword=' + keyword.value, true);
+    xhr.send();
+  });
+</script>
+<!-- <script>
+  // handling click button search
+  $('#search').on('click', '.action-edit', function(e) {
+    e.preventDefault();
+    var id_tag = $(this).attr('id');
+
+    $.ajax({
+      url: "<?= base_url('kurir/ajax'); ?>",
+      method: "post",
+      data: {
+        ajax_menu: 'search',
+        id_tag: id_tag,
+      },
+      success: function(data) {
+        $('#modal-edit-body').html(data);
+      }
+    });
+  })
+</script> -->
 <script>
   $(function() {
     $('#Tables').DataTable({

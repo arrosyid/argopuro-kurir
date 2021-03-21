@@ -43,10 +43,10 @@
       <!-- SEARCH FORM -->
       <form class="form-inline ml-3" action="" method="POST">
         <div class="input-group input-group-sm">
-          <input class="form-control form-control-navbar" name="keyword" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
+          <input class="form-control form-control-navbar" name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
           <div class="input-group-append">
-            <button class="btn btn-navbar" type="submit" name="search">
-              <i class="fas fa-search"></i>
+            <button class="btn btn-navbar" type="submit" name="search" id="search">
+              <i class=" fas fa-search"></i>
             </button>
           </div>
         </div>
