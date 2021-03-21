@@ -13,19 +13,44 @@ class Welcome extends CI_Controller
   public function index()
   {
     //rules form validation pengirim
-    $this->form_validation->set_rules('nm_pengirim', 'Nama Pengirim', 'required|trim');
-    $this->form_validation->set_rules('alamat_pengirim', 'Alamat Pengirim', 'required|trim');
-    $this->form_validation->set_rules('no_pengirim', 'Nomor Pengirim', 'required|trim');
-    $this->form_validation->set_rules('ancer_pengirim', 'Acer-ancer Pengirim', 'required|trim');
+    $this->form_validation->set_rules('nm_pengirim', 'Nama Pengirim', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('alamat_pengirim', 'Alamat Pengirim', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('no_pengirim', 'Nomor Pengirim', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('ancer_pengirim', 'Acer-ancer Pengirim', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+
     //rules form validation penerima
-    $this->form_validation->set_rules('nm_penerima', 'Nama Penerima', 'required|trim');
-    $this->form_validation->set_rules('alamat_penerima', 'Alamat Penerima', 'required|trim');
-    $this->form_validation->set_rules('no_penerima', 'Nomor Penerima', 'required|trim');
-    $this->form_validation->set_rules('ancer_penerima', 'Acer-ancer Penerima', 'required|trim');
+    $this->form_validation->set_rules('nm_penerima', 'Nama Penerima', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('alamat_penerima', 'Alamat Penerima', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('no_penerima', 'Nomor Penerima', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('ancer_penerima', 'Acer-ancer Penerima', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+
     //rules form validation deskripsi (pesanan)
-    $this->form_validation->set_rules('ket_barang', 'Keterangan Barang', 'required|trim');
-    $this->form_validation->set_rules('harga', 'Harga', 'required|trim');
-    $this->form_validation->set_rules('berat', 'Berat', 'required|trim');
+    $this->form_validation->set_rules('ket_barang', 'Keterangan Barang', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('harga', 'Harga', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('berat', 'Berat', 'required|trim|max_length[3]', [
+      'required' => 'Harap Mengisi Form ini',
+      'max_length' => 'barang terlalu berat!'
+    ]);
 
     if ($this->form_validation->run() == FALSE) {
       if ($this->session->userdata('nm_pengirim') == null)
