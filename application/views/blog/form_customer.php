@@ -20,7 +20,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control <?= form_error('nm_pengirim') != "" ? "is-invalid" : "" ?>" name="nm_pengirim" id="nm_pengirim" placeholder="Isi Nama Pengirim" value="<?= $simpanDataPengirim == null ? '' : (set_value('nm_pengirim') == '' ? $simpanDataPengirim['nm_pengirim'] : set_value('nm_pengirim')) ?>">
+                <input type="text" class="form-control <?= form_error('nm_pengirim') != "" ? "is-invalid" : "" ?>" name="nm_pengirim" id="nm_pengirim" placeholder="Isi Nama Pengirim" value="<?= set_value('nm_pengirim') != null ? set_value('nm_pengirim') : ($simpanDataPengirim == null ? '' :  $simpanDataPengirim['nm_pengirim']) ?>">
                 <?= form_error('nm_pengirim', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
             </div>
@@ -31,7 +31,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control <?= form_error('alamat_pengirim') != "" ? "is-invalid" : "" ?>" name="alamat_pengirim" id="alamat_pengirim" placeholder="Isi Alamat Pengirim" value="<?= $simpanDataPengirim == null ? '' : (set_value('alamat_pengirim') == '' ? $simpanDataPengirim['alamat_pengirim'] : set_value('alamat_pengirim')) ?>">
+                <input type="text" class="form-control <?= form_error('alamat_pengirim') != "" ? "is-invalid" : "" ?>" name="alamat_pengirim" id="alamat_pengirim" placeholder="Isi Alamat Pengirim" value="<?= set_value('alamat_pengirim') != null ? set_value('alamat_pengirim') : ($simpanDataPengirim == null ? '' :  $simpanDataPengirim['alamat_pengirim']) ?>">
                 <?= form_error('alamat_pengirim', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
             </div>
@@ -42,7 +42,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="number" class="form-control <?= form_error('no_pengirim') != "" ? "is-invalid" : "" ?>" name="no_pengirim" id="no_pengirim" placeholder="Isi Nomor HP Pengirim" value="<?= $simpanDataPengirim == null ? '' : (set_value('no_pengirim') == '' ? $simpanDataPengirim['no_HP_pengirim'] : set_value('no_pengirim')) ?>">
+                <input type="number" class="form-control <?= form_error('no_pengirim') != "" ? "is-invalid" : "" ?>" name="no_pengirim" id="no_pengirim" placeholder="Isi Nomor HP Pengirim" value="<?= set_value('no_pengirim') != null ? set_value('no_pengirim') : ($simpanDataPengirim == null ? '' :  $simpanDataPengirim['no_HP_pengirim']) ?>">
                 <?= form_error('no_pengirim', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
             </div>
@@ -53,7 +53,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control <?= form_error('ancer_pengirim') != "" ? "is-invalid" : "" ?>" name="ancer_pengirim" id="ancer_pengirim" placeholder="Isi Ancer-Ancer Alamat Pengirim" value="<?= $simpanDataPengirim == null ? '' : (set_value('ancer_pengirim') == '' ? $simpanDataPengirim['ket_alamat_pengirim'] : set_value('ancer_pengirim')) ?>">
+                <input type="text" class="form-control <?= form_error('ancer_pengirim') != "" ? "is-invalid" : "" ?>" name="ancer_pengirim" id="ancer_pengirim" placeholder="Isi Ancer-Ancer Alamat Pengirim" value="<?= set_value('ancer_pengirim') != null ? set_value('ancer_pengirim') : ($simpanDataPengirim == null ? '' :  $simpanDataPengirim['ket_alamat_pengirim']) ?>">
                 <?= form_error('ancer_pengirim', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
             </div>
@@ -64,7 +64,11 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="number" class="form-control" name="no_rek" id="no_rek" placeholder="Isi No. Rekening Jika Butuh Ditalangi" value="<?= $simpanDataPengirim == null ? '' : (set_value('no_rek') == '' ? $simpanDataPengirim['no_rek'] : set_value('no_rek')) ?>">
+                <input type="text" class="form-control <?= form_error('bank') != "" ? "is-invalid" : "" ?>" name="bank" id="bank" placeholder="Isi Nama Bank Jika Butuh Ditalangi" value="<?= set_value('bank') != null ? set_value('bank') : ($simpanDataPengirim == null ? '' :  $simpanDataPengirim['bank']) ?>">
+                <?= form_error('bank', '<small class="text-danger pl-3">', '</small>'); ?>
+                <input type="number" class="form-control" name="no_rek" id="no_rek" placeholder="Isi No. Rekening Jika Butuh Ditalangi" value="<?= set_value('no_rek') != null ? set_value('no_rek') : ($simpanDataPengirim == null ? '' :  $simpanDataPengirim['no_rek']) ?>">
+                <input type="text" class="form-control <?= form_error('atas_nama') != "" ? "is-invalid" : "" ?>" name="atas_nama" id="atas_nama" placeholder="Isi Nama Pada No. Rekening Jika Butuh Ditalangi" value="<?= set_value('atas_nama') != null ? set_value('atas_nama') : ($simpanDataPengirim == null ? '' :  $simpanDataPengirim['atas_nama']) ?>">
+                <?= form_error('atas_nama', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
             </div>
           </div>
@@ -178,7 +182,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="number" class="form-control" name="ongkir" id="ongkir" value="0" readonly>
+                <input type="number" class="form-control" name="ongkir" id="ongkir" value="<?= set_value('ongkir') != null ? set_value('ongkir') : 0 ?>" readonly>
               </div>
             </div>
           </div>

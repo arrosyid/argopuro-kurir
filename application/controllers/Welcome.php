@@ -12,6 +12,7 @@ class Welcome extends CI_Controller
 
   public function index()
   {
+    $no_rek = htmlspecialchars($this->input->post('no_rek', true));
     //rules form validation pengirim
     $this->form_validation->set_rules('nm_pengirim', 'Nama Pengirim', 'required|trim', [
       'required' => 'Harap Mengisi Form ini'
@@ -25,6 +26,14 @@ class Welcome extends CI_Controller
     $this->form_validation->set_rules('ancer_pengirim', 'Acer-ancer Pengirim', 'required|trim', [
       'required' => 'Harap Mengisi Form ini'
     ]);
+    if ($no_rek != null) {
+      $this->form_validation->set_rules('bank', 'Acer-ancer Pengirim', 'required|trim', [
+        'required' => 'Harap Mengisi Form ini jika anda ingin memakai jasa TALANGI'
+      ]);
+      $this->form_validation->set_rules('atas_nama', 'Acer-ancer Pengirim', 'required|trim', [
+        'required' => 'Harap Mengisi Form ini jika anda ingin memakai jasa TALANGI'
+      ]);
+    }
 
     //rules form validation penerima
     $this->form_validation->set_rules('nm_penerima', 'Nama Penerima', 'required|trim', [
@@ -70,7 +79,9 @@ class Welcome extends CI_Controller
         'alamat_pengirim' => htmlspecialchars($this->input->post('alamat_pengirim', true)),
         'no_HP_pengirim' => htmlspecialchars($this->input->post('no_pengirim', true)),
         'ket_alamat_pengirim' => htmlspecialchars($this->input->post('ancer_pengirim', true)),
-        'no_rek' => htmlspecialchars($this->input->post('no_rek', true))
+        'bank' => htmlspecialchars($this->input->post('bank', true)),
+        'no_rek' => $no_rek,
+        'atas_nama' => htmlspecialchars($this->input->post('atas_nama', true))
       ];
       // dihapus sessionnya dulu
       $this->session->unset_userdata($data_pengirim);
