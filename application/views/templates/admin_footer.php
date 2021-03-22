@@ -24,7 +24,7 @@
 <!-- Bootstrap 4 -->
 <script src="<?= base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="<?= base_url() ?>assets/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url() ?>assets/dist/js/adminlte.min.js"></script>
 
@@ -34,23 +34,53 @@
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<script src="<?= base_url() ?>assets/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<!-- <script src="<?= base_url() ?>assets/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
 <script src="<?= base_url() ?>assets/plugins/raphael/raphael.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="<?= base_url() ?>assets/plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/jquery-mapael/maps/usa_states.min.js"></script> -->
 <!-- ChartJS -->
-<script src="<?= base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
-<!-- starter template -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>
-  window.jQuery || document.write('<script src="<?= base_url() ?>assets/js/vendor/jquery.slim.min.js"><\/script>')
-</script>
-<script src="<?= base_url() ?>assets/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="<?= base_url() ?>assets/plugins/chart.js/Chart.min.js"></script> -->
 <!-- DataTables -->
 <script src="<?= base_url() ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- overlayScrollbar -->
+<script>
+  $(function() {
+    //The passed argument has to be at least a empty object or a object with your desired options
+    $("body").overlayScrollbars({});
+  });
+</script>
+<!-- ajax live search jQuery-->
+<script>
+  $(document).ready(function() {
+    $('#keyword').on('keyup', function(e) {
+      $('#container').load('<?= base_url('kurir/ajax') ?>?keyword=' + $('#keyword').val());
+    });
+  });
+</script>
+<!-- ajax live search -->
+<!-- <script>
+  // handling click button search
+  var container = document.getElementById('container');
+  var cari = document.getElementById('search');
+  var keyword = document.getElementById('keyword');
+
+  // cari.style.display = 'none';
+
+  keyword.addEventListener('keyup', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        container.innerHTML = xhr.responseText;
+        // console.log(xhr.responseText);
+      }
+    }
+    xhr.open('get', '<?= base_url('kurir/ajax') ?>?keyword=' + keyword.value, true);
+    xhr.send();
+  });
+</script> -->
 
 <script>
   $(function() {

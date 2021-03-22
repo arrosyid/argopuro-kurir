@@ -10,19 +10,19 @@
   <meta name="author" content="">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title><?= $title ?></title>
+  <link rel="icon" href="<?= base_url() ?>assets/img/icon.png">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/overlayScrollbars/css/OverlayScrollbars.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href="<?= base_url() ?>assets/bootstrap-4.5.2/assets/dist/css/bootstrap.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?= base_url() ?>assetsplugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/adminlte.min.css">
 </head>
@@ -36,17 +36,17 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../index3.html" class="nav-link">Home</a>
+          <a href="<?= base_url('kurir') ?>" class="nav-link">Home</a>
         </li>
       </ul>
 
       <!-- SEARCH FORM -->
-      <form class="form-inline ml-3">
+      <form class="form-inline ml-3" action="" method="POST">
         <div class="input-group input-group-sm">
-          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control form-control-navbar" name="keyword" id="keyword" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
           <div class="input-group-append">
-            <button class="btn btn-navbar" type="submit">
-              <i class="fas fa-search"></i>
+            <button class="btn btn-navbar" type="submit" name="search" id="search">
+              <i class=" fas fa-search"></i>
             </button>
           </div>
         </div>

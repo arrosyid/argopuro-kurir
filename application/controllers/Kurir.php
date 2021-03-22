@@ -23,6 +23,9 @@ class Kurir extends CI_Controller
     $data['subtitle'] = 'Dashboard Kurir';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $data['resi'] = $this->Pesanan_model->getAllPesanan('all data');
+    if (isset($_POST['search'])) {
+      $data['resi'] =  $this->Pesanan_model->getPesananByKeyword($this->input->post('keyword'));
+    }
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
@@ -129,5 +132,21 @@ class Kurir extends CI_Controller
         redirect('kurir');
       }
     }
+  }
+  public function ajax()
+  {
+    // $ajax_menu = $this->input->get('search');
+
+    // // ajax edit category
+    // if ($ajax_menu == 'search') {
+
+    $keyword = $this->input->get('keyword');
+
+    $data['resi'] = $this->Pesanan_model->getPesananByKeyword($keyword);
+    // var_dump($data['resi']);
+    // die;
+
+    $this->load->view('admin/ajax/search', $data);
+    // }
   }
 }

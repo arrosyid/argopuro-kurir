@@ -24,63 +24,77 @@
             <div class="pl-2 card">
               <h5>PENGIRIM</h5>
               <div class="row">
-                <div class="col-4">NAMA</div>
+                <div class="col-5">NAMA</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['nm_pengirim'] ?></div>
               </div>
               <div class="row">
-                <div class="col-4">ALAMAT</div>
+                <div class="col-5">ALAMAT</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['alamat_pengirim'] ?></div>
               </div>
               <div class="row">
-                <div class="col-4">NOMOR HP</div>
+                <div class="col-5">NOMOR HP</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['no_HP_pengirim'] ?></div>
               </div>
               <div class="row">
-                <div class="col-4">KETERANGAN ALAMAT</div>
+                <div class="col-5">KETERANGAN ALAMAT</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['ket_alamat_pengirim'] ?></div>
               </div>
-              <div class="row">
-                <div class="col-4">NOMOR REKENING</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['no_rek'] ?></div>
-              </div>
+              <?php if ($resi != null and $resi['no_rek'] != null) { ?>
+                <div class="row">
+                  <div class="col-5">BANK</div>
+                  <div class="col-7"><?= $resi['bank'] ?></div>
+                </div>
+                <div class="row">
+                  <div class="col-5">NOMOR REKENING</div>
+                  <div class="col-7"><?= $resi['no_rek'] ?></div>
+                </div>
+                <div class="row">
+                  <div class="col-5">ATAS NAMA</div>
+                  <div class="col-7"><?= $resi['atas_nama'] ?></div>
+                </div>
+              <?php } ?>
             </div><br>
           </div>
           <div class="col-sm-6">
             <div class="pl-2 card">
               <h5>Penerima</h5>
               <div class="row">
-                <div class="col-4">NAMA</div>
+                <div class="col-5">NAMA</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['nm_penerima'] ?></div>
               </div>
               <div class="row">
-                <div class="col-4">ALAMAT</div>
+                <div class="col-5">ALAMAT</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['alamat_penerima'] ?></div>
               </div>
               <div class="row">
-                <div class="col-4">NOMOR HP</div>
+                <div class="col-5">NOMOR HP</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['no_HP_penerima'] ?></div>
               </div>
               <div class="row">
-                <div class="col-4">KETERANGAN ALAMAT</div>
+                <div class="col-5">KETERANGAN ALAMAT</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['ket_alamat_penerima'] ?></div>
               </div>
-            </div><br>
+            </div>
             <div class="pl-2 card ">
               <h5>DESKRIPSI PENGIRIMAN</h5>
               <div class="row">
-                <div class="col-4">KETERANGAN BARANG</div>
+                <div class="col-5">KETERANGAN BARANG</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['ket_barang'] ?></div>
               </div>
               <div class="row">
-                <div class="col-4">HARGA BARANG</div>
+                <div class="col-5">HARGA BARANG</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : 'Rp. ' . number_format($resi['harga_barang'], 0, ',', '.') ?></div>
               </div>
               <div class="row">
-                <div class="col-4">ONKIR</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : 'Rp. ' . number_format($resi['onkir'], 0, ',', '.') ?></div>
+                <div class="col-5">BERAT BARANG</div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['berat_barang'] . ' KG' ?></div>
               </div>
               <div class="row">
-                <div class="col-4">STATUS</div>
+                <div class="col-5">ONGKIR</div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : 'Rp. ' . number_format($resi['ongkir'], 0, ',', '.') ?></div>
+              </div>
+              <div class="row">
+                <div class="col-5">STATUS</div>
                 <div class="col-7"><?php
                                     if ($resi == null) {
                                       echo 'Data Tidak Ditemukan';
@@ -104,7 +118,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-4">JENIS ANTAR</div>
+                <div class="col-5">JENIS ANTAR</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : ($resi['jenis_antar'] == 'E' ? 'EKSPEDISI' : 'EKSPRESS') ?></div>
               </div>
             </div>

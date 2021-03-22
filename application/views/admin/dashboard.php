@@ -1,5 +1,5 @@
 <!-- Main content -->
-<section class="content">
+<section class="content" id="container">
   <div class="container-fluid">
     <div class="row mb-2">
       <?php foreach ($resi as $r) : ?>
