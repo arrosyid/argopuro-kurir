@@ -10,6 +10,7 @@
   <meta name="author" content="">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title><?= $title ?></title>
+  <link rel="icon" href="<?= base_url() ?>assets/img/icon.png">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
@@ -35,7 +36,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../index3.html" class="nav-link">Home</a>
+          <a href="<?= base_url('kurir') ?>" class="nav-link">Home</a>
         </li>
       </ul>
 

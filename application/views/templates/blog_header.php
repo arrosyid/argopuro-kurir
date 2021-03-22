@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Form Customer</title>
+  <link rel="icon" href="<?= base_url() ?>assets/img/icon.png">
+
   <!-- bootstrap 4 -->
   <link rel="stylesheet" href="<?= base_url('assets/bootstrap-4.5.2/assets/dist/css/bootstrap.min.css') ?> ">
   <!-- Font Awesome -->
