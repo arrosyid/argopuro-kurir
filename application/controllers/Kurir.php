@@ -38,7 +38,6 @@ class Kurir extends CI_Controller
     $data['subtitle'] = 'Resi Yang masih berada di customer/pengirim';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $data['resi'] = $this->Pesanan_model->getAllPesanan('pending');
-    $data['uri'] = $this->uri->segment(2);
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
@@ -51,7 +50,6 @@ class Kurir extends CI_Controller
     $data['subtitle'] = 'Resi Yang Sedang Diproses';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $data['resi'] = $this->Pesanan_model->getAllPesanan('proses');
-    $data['uri'] = $this->uri->segment(2);
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
@@ -64,7 +62,6 @@ class Kurir extends CI_Controller
     $data['subtitle'] = 'Resi Diterima Kantor';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $data['resi'] = $this->Pesanan_model->getAllPesanan('diterima');
-    $data['uri'] = $this->uri->segment(2);
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
@@ -77,7 +74,6 @@ class Kurir extends CI_Controller
     $data['subtitle'] = 'Pengiriman Telah Sukses';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $data['resi'] = $this->Pesanan_model->getAllPesanan('sukses');
-    $data['uri'] = $this->uri->segment(2);
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
@@ -241,7 +237,7 @@ class Kurir extends CI_Controller
       }
     }
   }
-  public function delete_resi($id_pesanan, $menu = null)
+  public function delete_resi($id_pesanan)
   {
     $penerima = $this->Pesanan_model->getPesananById($id_pesanan);
     if ($this->Pesanan_model->deletePesananById($$id_pesanan)) {
@@ -251,14 +247,14 @@ class Kurir extends CI_Controller
         '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     Berhasil Menghapus data Pesanan atas nama' . $penerima['nm_pengirim'] . 'yang dikirim ke' . $penerima['nm_penerima'] . '</div>'
       );
-      redirect('kurir/' . $menu);
+      redirect('kurir');
     } else {
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     Gagal Menghapus data Pesanan atas nama' . $penerima['nm_pengirim'] . 'yang dikirim ke' . $penerima['nm_penerima'] . '</div>'
       );
-      redirect('kurir/' . $menu);
+      redirect('kurir');
     }
   }
   public function ajax()
