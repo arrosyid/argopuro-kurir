@@ -120,14 +120,14 @@ class Kurir extends CI_Controller
         $this->session->set_flashdata(
           'message',
           '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            Berhasil mengubah status Pesanan atas nama ' . $data['resi']['nm_pengirim'] . 'yang dikirim ke ' . $data['resi']['nm_penerima'] . '</div>'
+            Berhasil mengubah status Pesanan atas nama ' . $data['resi']['nm_pengirim'] . ' yang dikirim ke ' . $data['resi']['nm_penerima'] . '</div>'
         );
         redirect('kurir');
       } else {
         $this->session->set_flashdata(
           'message',
           '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            Gagal mengubah status Pesanan atas nama ' . $data['resi']['nm_pengirim'] . 'yang dikirim ke ' . $data['resi']['nm_penerima'] . '</div>'
+            Gagal mengubah status Pesanan atas nama ' . $data['resi']['nm_pengirim'] . ' yang dikirim ke ' . $data['resi']['nm_penerima'] . '</div>'
         );
         redirect('kurir');
       }
@@ -224,14 +224,14 @@ class Kurir extends CI_Controller
         $this->session->set_flashdata(
           'message',
           '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Berhasil mengubah data Pesanan atas nama ' . $data['resi']['nm_pengirim'] . 'yang dikirim ke ' . $data['resi']['nm_penerima'] . '</div>'
+                      Berhasil mengubah data Pesanan atas nama ' . $data['resi']['nm_pengirim'] . ' yang dikirim ke ' . $data['resi']['nm_penerima'] . '</div>'
         );
         redirect('kurir');
       } else {
         $this->session->set_flashdata(
           'message',
           '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Gagal mengubah data Pesanan atas nama ' . $data['resi']['nm_pengirim'] . 'yang dikirim ke ' . $data['resi']['nm_penerima'] . '</div>'
+                      Gagal mengubah data Pesanan atas nama ' . $data['resi']['nm_pengirim'] . ' yang dikirim ke ' . $data['resi']['nm_penerima'] . '</div>'
         );
         redirect('kurir');
       }
@@ -245,14 +245,14 @@ class Kurir extends CI_Controller
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Berhasil Menghapus data Pesanan atas nama ' . $penerima['nm_pengirim'] . 'yang dikirim ke ' . $penerima['nm_penerima'] . '</div>'
+                    Berhasil Menghapus data Pesanan atas nama ' . $penerima['nm_pengirim'] . ' yang dikirim ke ' . $penerima['nm_penerima'] . '</div>'
       );
       redirect('kurir');
     } else {
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Gagal Menghapus data Pesanan atas nama ' . $penerima['nm_pengirim'] . 'yang dikirim ke ' . $penerima['nm_penerima'] . '</div>'
+                    Gagal Menghapus data Pesanan atas nama ' . $penerima['nm_pengirim'] . ' yang dikirim ke ' . $penerima['nm_penerima'] . '</div>'
       );
       redirect('kurir');
     }
