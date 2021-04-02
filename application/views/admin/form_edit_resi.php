@@ -117,7 +117,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="text" class="form-control" name="ancer_penerima" id="ancer_penerima" placeholder="Isi Ancer-Ancer Alamat Penerima" value="<?= set_value('ancer_penerima') != null ? set_value('ancer_penerima') : $resi['ancer_penerima'] ?>">
+                <input type="text" class="form-control" name="ancer_penerima" id="ancer_penerima" placeholder="Isi Ancer-Ancer Alamat Penerima" value="<?= set_value('ancer_penerima') != null ? set_value('ancer_penerima') : $resi['ket_alamat_penerima'] ?>">
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="number" class="form-control <?= form_error('harga') != "" ? "is-invalid" : "" ?>" name="harga" id="harga" placeholder="Isi Harga Barang Dalam Paket" value="<?= set_value('harga') != null ? set_value('harga') : $resi['harga'] ?>">
+                <input type="number" class="form-control <?= form_error('harga') != "" ? "is-invalid" : "" ?>" name="harga" id="harga" placeholder="Isi Harga Barang Dalam Paket" value="<?= set_value('harga') != null ? set_value('harga') : $resi['harga_barang'] ?>">
                 <?= form_error('harga', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
             </div>
@@ -166,7 +166,7 @@
             </div>
             <div class="col-8">
               <div class="form-group">
-                <input type="number" class="form-control <?= form_error('berat') != "" ? "is-invalid" : "" ?>" name="berat" id="berat" max="999" placeholder="Isi Berat Barang/Paket" value="<?= set_value('berat') != null ? set_value('berat') : $resi['berat'] ?>">
+                <input type="number" class="form-control <?= form_error('berat') != "" ? "is-invalid" : "" ?>" name="berat" id="berat" max="999" placeholder="Isi Berat Barang/Paket" value="<?= set_value('berat') != null ? set_value('berat') : $resi['berat_barang'] ?>">
                 <?= form_error('berat', '<small class="text-danger pl-3">', '</small>'); ?>
               </div>
             </div>
@@ -180,7 +180,7 @@
             </div>
             <div class="col-sm-10">
               <div class="form-group">
-                <input type="number" class="form-control" name="ongkir" id="ongkir" value="<?= set_value('onkir') != null ? set_value('onkir') : $resi['onkir'] ?>" readonly>
+                <input type="number" class="form-control" name="ongkir" id="ongkir" value="<?= set_value('ongkir') != null ? set_value('ongkir') : $resi['ongkir'] ?>" readonly>
               </div>
             </div>
           </div>
