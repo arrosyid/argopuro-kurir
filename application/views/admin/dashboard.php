@@ -14,7 +14,7 @@
                   <i class="fas fa-share-square"></i></a>
                 <a href="<?= base_url('kurir/edit_resi/' . $r['id_pesanan']) ?>" class="btn btn-tool" data-toggle="tooltip" title="Edit">
                   <i class="fas fa-edit"></i></a>
-                <a href="<?= base_url('kurir/delete_resi/' . $r['id_pesanan'] . '/' . $uri) ?>" class="btn btn-tool" data-toggle="tooltip" title="Hapus">
+                <a href="<?= base_url('kurir/delete_resi/' . $r['id_pesanan']) ?>" class="btn btn-tool" data-toggle="tooltip" title="Hapus">
                   <i class="fas fa-trash-alt"></i></a>
               </div>
             </div>
@@ -68,10 +68,10 @@
                                       echo '</Strong>';
                                     endif; ?>
                 </div>
-                <div class="col-6 ">
-                  <a href="<?= base_url('kurir/delete_resi/' . $r['id_pesanan'] . '/' . $this->uri->segment(2)) ?>" class="btn btn-danger pl-1 float-right">Hapus</a>
-                  <a href="<?= base_url('kurir/edit_resi/' . $r['id_pesanan']) ?>" class="btn btn-warning pl-1 float-right">Edit</a>
-                  <a href="<?= base_url('kurir/struck/' . $r['id_pesanan']) ?>" class="btn btn-primary pl-1 float-right">Detail</a>
+                <div class="col-6">
+                  <a href="<?= base_url('kurir/delete_resi/' . $r['id_pesanan']) ?>" class="btn btn-danger ml-1 float-right">Hapus</a>
+                  <a href="<?= base_url('kurir/edit_resi/' . $r['id_pesanan']) ?>" class="btn btn-warning ml-1 float-right">Edit</a>
+                  <a href="<?= base_url('kurir/struck/' . $r['id_pesanan']) ?>" class="btn btn-primary ml-1 float-right">Detail</a>
                 </div>
                 <!-- <div class="col-3">
                   <a href="<?= base_url('kurir/struck/' . $r['id_pesanan']) ?>" class="btn btn-primary">Detail</a>
