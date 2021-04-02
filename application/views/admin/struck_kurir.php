@@ -139,7 +139,7 @@
             </div>
           </div>
           <div class="col-6 text-right">
-            <a href="https://api.whatsapp.com/send?phone=<?= $resi['no_HP_pengirim']; ?>&text=Customer%20yang%20terhormat,%20Pengiriman%20anda%20<?= ($resi['status'] == 1 ? 'Sedang Dipending' : ($resi['status'] == 2 ? 'Telah Diterima Kantor' : ($resi['status'] == 3 ? 'Dalam Pengiriman' : ($resi['status'] == 4 ? 'Telah Sukses diterima' : '')))); ?>%20silahkan%20Cek%20Resi%20Anda%20Dilink%20berikut%20ini,%20terima kasih. <?= base_url('welcome/struck/' . $resi['id_pesanan']) ?>" class="btn btn-success btn-round" role="buttton" data-toggle="tooltip" data-placement="top" title="Kirim WA" target="_blank">
+            <a href="https://api.whatsapp.com/send?phone=<?= $resi['no_HP_pengirim']; ?>&text=Customer%20yang%20terhormat,%20Pengiriman%20anda%20<?= ($resi['status'] == 1 ? 'Sedang%20Dipending%20' : ($resi['status'] == 2 ? 'Telah%20Diterima Kantor%20' : ($resi['status'] == 3 ? 'Dalam%20Pengiriman%20' : ($resi['status'] == 4 ? 'Telah%20Sukses%20diterima%20' : '')))); ?>%20yang%20dikirim%20ke%20<?= $resi['nm_penerima'] ?>%20silahkan%20Cek%20Resi%20Anda%20Dilink%20berikut%20ini,%20terima kasih. <?= base_url('welcome/struck/' . $resi['id_pesanan']) ?>" class="btn btn-success btn-round" role="buttton" data-toggle="tooltip" data-placement="top" title="Kirim WA" target="_blank">
               Kirim WA
             </a>
             <button type="submit" class="btn btn-primary">KONFIRMASI</button>

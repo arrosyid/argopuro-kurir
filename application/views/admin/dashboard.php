@@ -7,7 +7,7 @@
           <!-- Default box -->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Title</h3>
+              <h3 class="card-title">Pesanan dengan ID : <?= $r['id_pesanan'] ?></h3>
 
               <div class="card-tools">
                 <a href="<?= base_url('kurir/struck/' . $r['id_pesanan']) ?>" class="btn btn-tool" data-toggle="tooltip" title="Detail">
