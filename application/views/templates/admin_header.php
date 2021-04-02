@@ -68,7 +68,7 @@
                 <li class="breadcrumb-item active"><?= $title ?></li>
               </ol>
             </div>
-            <?= $this->session->flashdata('massage'); ?>
           </div>
+          <?= $this->session->flashdata('message'); ?>
         </div><!-- /.container-fluid -->
       </section>
