@@ -250,14 +250,14 @@ class Kurir extends CI_Controller
         '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     Berhasil menginputkan data Pesanan</div>'
       );
-      redirect('welcome/' . $menu);
+      redirect('kurir/' . $menu);
     } else {
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     Gagal menginputkan data Pesanan</div>'
       );
-      redirect('welcome/' . $menu);
+      redirect('kurir/' . $menu);
     }
   }
   public function ajax()
