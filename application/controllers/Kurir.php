@@ -186,10 +186,11 @@ class Kurir extends CI_Controller
     ]);
 
     if ($this->form_validation->run() == FALSE) {
+      $data['uri'] = $this->uri->segment(2);
 
       $this->load->view('templates/admin_header', $data);
       $this->load->view('templates/sidebar', $data);
-      $this->load->view('admin/from_edit_resi', $data);
+      $this->load->view('admin/form_edit_resi', $data);
       $this->load->view('templates/admin_footer');
     } else {
 
