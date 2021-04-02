@@ -124,14 +124,14 @@ class Kurir extends CI_Controller
         $this->session->set_flashdata(
           'message',
           '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            Berhasil Mengubah Status Pesanan</div>'
+            Berhasil mengubah status Pesanan atas nama ' . $data['resi']['nm_pengirim'] . 'yang dikirim ke' . $data['resi']['nm_penerima'] . '</div>'
         );
         redirect('kurir');
       } else {
         $this->session->set_flashdata(
           'message',
           '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            Gagal Mengubah Status Pesanan</div>'
+            Gagal mengubah status Pesanan atas nama ' . $data['resi']['nm_pengirim'] . 'yang dikirim ke' . $data['resi']['nm_penerima'] . '</div>'
         );
         redirect('kurir');
       }
@@ -223,39 +223,40 @@ class Kurir extends CI_Controller
       // var_dump($data_pesanan);
       // die;
 
-      if ($this->Pesanan_model->insertPesanan($data_pesanan)) {
+      if ($this->Pesanan_model->updatePesananById($id_pesanan, $data_pesanan)) {
         //input Pesanan
         $this->session->set_flashdata(
           'message',
           '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Berhasil menginputkan data Pesanan</div>'
+                      Berhasil mengubah data Pesanan atas nama ' . $data['resi']['nm_pengirim'] . 'yang dikirim ke' . $data['resi']['nm_penerima'] . '</div>'
         );
-        redirect('welcome');
+        redirect('kurir');
       } else {
         $this->session->set_flashdata(
           'message',
           '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                      Gagal menginputkan data Pesanan</div>'
+                      Gagal mengubah data Pesanan atas nama ' . $data['resi']['nm_pengirim'] . 'yang dikirim ke' . $data['resi']['nm_penerima'] . '</div>'
         );
-        redirect('welcome');
+        redirect('kurir');
       }
     }
   }
   public function delete_resi($id_pesanan, $menu = null)
   {
+    $penerima = $this->pesanan_model->getPesananById($id_pesanan);
     if ($this->Pesanan_model->deletePesananById($$id_pesanan)) {
       //input Pesanan
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Berhasil menginputkan data Pesanan</div>'
+                    Berhasil Menghapus data Pesanan atas nama' . $penerima['nm_pengirim'] . 'yang dikirim ke' . $penerima['nm_penerima'] . '</div>'
       );
       redirect('kurir/' . $menu);
     } else {
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Gagal menginputkan data Pesanan</div>'
+                    Gagal Menghapus data Pesanan atas nama' . $penerima['nm_pengirim'] . 'yang dikirim ke' . $penerima['nm_penerima'] . '</div>'
       );
       redirect('kurir/' . $menu);
     }
