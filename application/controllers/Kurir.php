@@ -243,7 +243,7 @@ class Kurir extends CI_Controller
   }
   public function delete_resi($id_pesanan, $menu = null)
   {
-    $penerima = $this->pesanan_model->getPesananById($id_pesanan);
+    $penerima = $this->Pesanan_model->getPesananById($id_pesanan);
     if ($this->Pesanan_model->deletePesananById($$id_pesanan)) {
       //input Pesanan
       $this->session->set_flashdata(
