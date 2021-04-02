@@ -133,6 +133,129 @@ class Kurir extends CI_Controller
       }
     }
   }
+
+  public function edit_resi($id_pesanan)
+  {
+    $data['title'] = 'Diterima Kantor';
+    $data['subtitle'] = 'Resi Diterima Kantor';
+    $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
+    $data['resi'] = $this->Pesanan_model->getPesananById($id_pesanan);
+
+
+    $no_rek = htmlspecialchars($this->input->post('no_rek', true));
+    //rules form validation pengirim
+    $this->form_validation->set_rules('nm_pengirim', 'Nama Pengirim', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('alamat_pengirim', 'Alamat Pengirim', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('no_pengirim', 'Nomor Pengirim', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    if ($no_rek != null) {
+      $this->form_validation->set_rules('bank', 'Acer-ancer Pengirim', 'required|trim', [
+        'required' => 'Harap Mengisi Form ini jika anda ingin memakai jasa TALANGI'
+      ]);
+      $this->form_validation->set_rules('atas_nama', 'Acer-ancer Pengirim', 'required|trim', [
+        'required' => 'Harap Mengisi Form ini jika anda ingin memakai jasa TALANGI'
+      ]);
+    }
+
+    //rules form validation penerima
+    $this->form_validation->set_rules('nm_penerima', 'Nama Penerima', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('alamat_penerima', 'Alamat Penerima', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('no_penerima', 'Nomor Penerima', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+
+    //rules form validation deskripsi (pesanan)
+    $this->form_validation->set_rules('ket_barang', 'Keterangan Barang', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('harga', 'Harga', 'required|trim', [
+      'required' => 'Harap Mengisi Form ini'
+    ]);
+    $this->form_validation->set_rules('berat', 'Berat', 'required|trim|max_length[3]', [
+      'required' => 'Harap Mengisi Form ini',
+      'max_length' => 'barang terlalu berat!'
+    ]);
+
+    if ($this->form_validation->run() == FALSE) {
+
+      $this->load->view('templates/admin_header', $data);
+      $this->load->view('templates/sidebar', $data);
+      $this->load->view('admin/from_edit_resi', $data);
+      $this->load->view('templates/admin_footer');
+    } else {
+
+      $data_pesanan = [
+        'nm_pengirim' => htmlspecialchars($this->input->post('nm_pengirim', true)),
+        'alamat_pengirim' => htmlspecialchars($this->input->post('alamat_pengirim', true)),
+        'no_HP_pengirim' => htmlspecialchars($this->input->post('no_pengirim', true)),
+        'ket_alamat_pengirim' => htmlspecialchars($this->input->post('ancer_pengirim', true)),
+        'bank' => htmlspecialchars($this->input->post('bank', true)),
+        'no_rek' => $no_rek,
+        'atas_nama' => htmlspecialchars($this->input->post('atas_nama', true)),
+        'id_pesanan' => htmlspecialchars($this->input->post('id', true)),
+        'nm_penerima' => htmlspecialchars($this->input->post('nm_penerima', true)),
+        'alamat_penerima' => htmlspecialchars($this->input->post('alamat_penerima', true)),
+        'no_HP_penerima' => htmlspecialchars($this->input->post('no_penerima', true)),
+        'ket_alamat_penerima' => htmlspecialchars($this->input->post('ancer_penerima', true)),
+        'ket_barang' => htmlspecialchars($this->input->post('ket_barang', true)),
+        'harga_barang' => htmlspecialchars($this->input->post('harga', true)),
+        'berat_barang' => htmlspecialchars($this->input->post('berat', true)),
+        'ongkir' => htmlspecialchars($this->input->post('ongkir', true)),
+        // E = ekspedisi, Ex = Express
+        'jenis_antar' => "E",
+        // 1 = pending, 2 = proses/dikirim, 3 = diterima kantor, 4 = sukses
+        'status' => 1,
+        'date_created' => time()
+      ];
+      // var_dump($data_pesanan);
+      // die;
+
+      if ($this->Pesanan_model->insertPesanan($data_pesanan)) {
+        //input Pesanan
+        $this->session->set_flashdata(
+          'message',
+          '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      Berhasil menginputkan data Pesanan</div>'
+        );
+        redirect('welcome');
+      } else {
+        $this->session->set_flashdata(
+          'message',
+          '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      Gagal menginputkan data Pesanan</div>'
+        );
+        redirect('welcome');
+      }
+    }
+  }
+  public function delete_resi($id_pesanan, $menu)
+  {
+    if ($this->Pesanan_model->deletePesananById($$id_pesanan)) {
+      //input Pesanan
+      $this->session->set_flashdata(
+        'message',
+        '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Berhasil menginputkan data Pesanan</div>'
+      );
+      redirect('welcome/' . $menu);
+    } else {
+      $this->session->set_flashdata(
+        'message',
+        '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Gagal menginputkan data Pesanan</div>'
+      );
+      redirect('welcome/' . $menu);
+    }
+  }
   public function ajax()
   {
     // $ajax_menu = $this->input->get('search');
