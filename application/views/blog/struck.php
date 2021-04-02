@@ -37,7 +37,7 @@
               </div>
               <div class="row">
                 <div class="col-5">KETERANGAN ALAMAT</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['ket_alamat_pengirim'] ?></div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : ($resi['ket_alamat_pengirim'] == 0 ? 'tidak ada' : $resi['ket_alamat_pengirim']) ?></div>
               </div>
               <?php if ($resi != null and $resi['no_rek'] != null) { ?>
                 <div class="row">
@@ -72,7 +72,7 @@
               </div>
               <div class="row">
                 <div class="col-5">KETERANGAN ALAMAT</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['ket_alamat_penerima'] ?></div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : ($resi['ket_alamat_penerima'] == 0 ? 'tidak ada' : $resi['ket_alamat_penerima']) ?></div>
               </div>
             </div>
             <div class="pl-2 card ">
@@ -93,37 +93,39 @@
                 <div class="col-5">ONGKIR</div>
                 <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : 'Rp. ' . number_format($resi['ongkir'], 0, ',', '.') ?></div>
               </div>
-              <div class="row">
-                <div class="col-5">STATUS</div>
-                <div class="col-7"><?php
-                                    if ($resi == null) {
-                                      echo 'Data Tidak Ditemukan';
-                                    } else {
-                                      switch ($resi['status']) {
-                                        case 1:
-                                          echo 'pending';
-                                          break;
-                                        case 2:
-                                          echo 'Diterima Kantor';
-                                          break;
-                                        case 3:
-                                          echo 'Dalam Pengiriman';
-                                          break;
-                                        case 4:
-                                          echo 'Pengiriman Sukses';
-                                          break;
-                                      }
-                                    }
-                                    ?>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-5">JENIS ANTAR</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : ($resi['jenis_antar'] == 'E' ? 'EKSPEDISI' : 'EKSPRESS') ?></div>
-              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-5">JENIS ANTAR</div>
+              <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : ($resi['jenis_antar'] == 'E' ? 'EKSPEDISI' : 'EKSPRESS') ?></div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-5">STATUS</div>
+      <div class="col-7"><?php
+                          if ($resi == null) {
+                            echo 'Data Tidak Ditemukan';
+                          } else {
+                            switch ($resi['status']) {
+                              case 1:
+                                echo 'pending';
+                                break;
+                              case 2:
+                                echo 'Diterima Kantor';
+                                break;
+                              case 3:
+                                echo 'Dalam Pengiriman';
+                                break;
+                              case 4:
+                                echo 'Pengiriman Sukses';
+                                break;
+                            }
+                          }
+                          ?>
       </div>
     </div>
 

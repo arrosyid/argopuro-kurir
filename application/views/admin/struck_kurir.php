@@ -39,7 +39,7 @@
               </div>
               <div class="row">
                 <div class="col-4">KETERANGAN ALAMAT</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['ket_alamat_pengirim'] ?></div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : ($resi['ket_alamat_pengirim'] == 0 ? 'tidak ada' : $resi['ket_alamat_pengirim']) ?></div>
               </div>
               <?php if ($resi != null and $resi['no_rek'] != null) { ?>
                 <div class="row">
@@ -74,7 +74,7 @@
               </div>
               <div class="row">
                 <div class="col-4">KETERANGAN ALAMAT</div>
-                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : $resi['ket_alamat_penerima'] ?></div>
+                <div class="col-7"><?= $resi == null ? 'Data Tidak Ditemukan' : ($resi['ket_alamat_penerima'] == 0 ? 'tidak ada' : $resi['ket_alamat_penerima']) ?></div>
               </div>
             </div>
             <div class="pl-2 card ">
