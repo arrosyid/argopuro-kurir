@@ -68,10 +68,10 @@
                                       echo '</Strong>';
                                     endif; ?>
                 </div>
-                <div class="col-6 float-right">
-                  <a href="<?= base_url('kurir/struck/' . $r['id_pesanan']) ?>" class="btn btn-primary">Detail</a>
-                  <a href="<?= base_url('kurir/edit_resi/' . $r['id_pesanan']) ?>" class="btn btn-warning">Edit</a>
-                  <a href="<?= base_url('kurir/delete_resi/' . $r['id_pesanan'] . '/' . $this->uri->segment(2)) ?>" class="btn btn-danger">Hapus</a>
+                <div class="col-6 ">
+                  <a href="<?= base_url('kurir/struck/' . $r['id_pesanan']) ?>" class="btn btn-primary float-right">Detail</a>
+                  <a href="<?= base_url('kurir/edit_resi/' . $r['id_pesanan']) ?>" class="btn btn-warning float-right">Edit</a>
+                  <a href="<?= base_url('kurir/delete_resi/' . $r['id_pesanan'] . '/' . $this->uri->segment(2)) ?>" class="btn btn-danger float-right">Hapus</a>
                 </div>
                 <!-- <div class="col-3">
                   <a href="<?= base_url('kurir/struck/' . $r['id_pesanan']) ?>" class="btn btn-primary">Detail</a>
