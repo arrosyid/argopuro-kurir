@@ -38,10 +38,11 @@ class Kurir extends CI_Controller
     $data['subtitle'] = 'Resi Yang masih berada di customer/pengirim';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $data['resi'] = $this->Pesanan_model->getAllPesanan('pending');
+    $data['uri'] = $this->uri->segment(2);
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
-    $this->load->view('admin/dashboard');
+    $this->load->view('admin/dashboard', $data);
     $this->load->view('templates/admin_footer');
   }
   public function process()
@@ -50,10 +51,11 @@ class Kurir extends CI_Controller
     $data['subtitle'] = 'Resi Yang Sedang Diproses';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $data['resi'] = $this->Pesanan_model->getAllPesanan('proses');
+    $data['uri'] = $this->uri->segment(2);
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
-    $this->load->view('admin/dashboard');
+    $this->load->view('admin/dashboard', $data);
     $this->load->view('templates/admin_footer');
   }
   public function sent()
@@ -62,10 +64,11 @@ class Kurir extends CI_Controller
     $data['subtitle'] = 'Resi Diterima Kantor';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $data['resi'] = $this->Pesanan_model->getAllPesanan('diterima');
+    $data['uri'] = $this->uri->segment(2);
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
-    $this->load->view('admin/dashboard');
+    $this->load->view('admin/dashboard', $data);
     $this->load->view('templates/admin_footer');
   }
   public function success()
@@ -74,10 +77,11 @@ class Kurir extends CI_Controller
     $data['subtitle'] = 'Pengiriman Telah Sukses';
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
     $data['resi'] = $this->Pesanan_model->getAllPesanan('sukses');
+    $data['uri'] = $this->uri->segment(2);
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
-    $this->load->view('admin/dashboard');
+    $this->load->view('admin/dashboard', $data);
     $this->load->view('templates/admin_footer');
   }
   public function struck($id_pesanan = null)
@@ -186,7 +190,6 @@ class Kurir extends CI_Controller
     ]);
 
     if ($this->form_validation->run() == FALSE) {
-      $data['uri'] = $this->uri->segment(2);
 
       $this->load->view('templates/admin_header', $data);
       $this->load->view('templates/sidebar', $data);
@@ -238,7 +241,7 @@ class Kurir extends CI_Controller
       }
     }
   }
-  public function delete_resi($id_pesanan, $menu)
+  public function delete_resi($id_pesanan, $menu = null)
   {
     if ($this->Pesanan_model->deletePesananById($$id_pesanan)) {
       //input Pesanan
