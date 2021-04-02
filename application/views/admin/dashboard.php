@@ -14,7 +14,7 @@
                   <i class="fas fa-share-square"></i></a>
                 <a href="<?= base_url('kurir/edit_resi/' . $r['id_pesanan']) ?>" class="btn btn-tool" data-toggle="tooltip" title="Edit">
                   <i class="fas fa-edit"></i></a>
-                <a href="<?= base_url('kurir/delete_resi/' . $r['id_pesanan'] . '/' . $this->uri->segment(2)) ?>" class="btn btn-tool" data-toggle="tooltip" title="Hapus">
+                <a href="<?= base_url('kurir/delete_resi/' . $r['id_pesanan'] . '/' . $uri) ?>" class="btn btn-tool" data-toggle="tooltip" title="Hapus">
                   <i class="fas fa-trash-alt"></i></a>
               </div>
             </div>
