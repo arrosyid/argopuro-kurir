@@ -9,7 +9,6 @@
       <!-- input type radio tidak bisa -->
       <div class="card-body">
         <div class="row">
-          <?= $this->session->flashdata('massage'); ?>
           <div class="col-sm-6">
             <!-- logo & barcode-->
             <div class="row pr-3">

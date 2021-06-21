@@ -32,6 +32,7 @@ class Kurir extends CI_Controller
     $this->load->view('admin/dashboard');
     $this->load->view('templates/admin_footer');
   }
+
   public function pending()
   {
     $data['title'] = 'pending';
@@ -44,6 +45,7 @@ class Kurir extends CI_Controller
     $this->load->view('admin/dashboard', $data);
     $this->load->view('templates/admin_footer');
   }
+
   public function process()
   {
     $data['title'] = 'Dalam Proses';
@@ -56,6 +58,7 @@ class Kurir extends CI_Controller
     $this->load->view('admin/dashboard', $data);
     $this->load->view('templates/admin_footer');
   }
+
   public function sent()
   {
     $data['title'] = 'Diterima Kantor';
@@ -68,6 +71,7 @@ class Kurir extends CI_Controller
     $this->load->view('admin/dashboard', $data);
     $this->load->view('templates/admin_footer');
   }
+
   public function success()
   {
     $data['title'] = 'Pengiriman Sukses';
@@ -80,6 +84,7 @@ class Kurir extends CI_Controller
     $this->load->view('admin/dashboard', $data);
     $this->load->view('templates/admin_footer');
   }
+
   public function struck($id_pesanan = null)
   {
     $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
@@ -122,14 +127,14 @@ class Kurir extends CI_Controller
           '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             Berhasil mengubah status Pesanan atas nama ' . $data['resi']['nm_pengirim'] . ' yang dikirim ke ' . $data['resi']['nm_penerima'] . '</div>'
         );
-        redirect('kurir');
+        redirect("struck/$id_pesanan");
       } else {
         $this->session->set_flashdata(
           'message',
           '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             Gagal mengubah status Pesanan atas nama ' . $data['resi']['nm_pengirim'] . ' yang dikirim ke ' . $data['resi']['nm_penerima'] . '</div>'
         );
-        redirect('kurir');
+        redirect("struck/$id_pesanan");
       }
     }
   }
@@ -237,6 +242,7 @@ class Kurir extends CI_Controller
       }
     }
   }
+
   public function delete_resi($id_pesanan)
   {
     $penerima = $this->Pesanan_model->getPesananById($id_pesanan);
@@ -257,6 +263,7 @@ class Kurir extends CI_Controller
       redirect('kurir');
     }
   }
+
   public function ajax()
   {
     // $ajax_menu = $this->input->get('search');
