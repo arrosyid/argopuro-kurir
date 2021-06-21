@@ -127,14 +127,14 @@ class Kurir extends CI_Controller
           '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             Berhasil mengubah status Pesanan atas nama ' . $data['resi']['nm_pengirim'] . ' yang dikirim ke ' . $data['resi']['nm_penerima'] . '</div>'
         );
-        redirect("struck/$id_pesanan");
+        redirect("kurir/struck/$id_pesanan");
       } else {
         $this->session->set_flashdata(
           'message',
           '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             Gagal mengubah status Pesanan atas nama ' . $data['resi']['nm_pengirim'] . ' yang dikirim ke ' . $data['resi']['nm_penerima'] . '</div>'
         );
-        redirect("struck/$id_pesanan");
+        redirect("kurir/struck/$id_pesanan");
       }
     }
   }
