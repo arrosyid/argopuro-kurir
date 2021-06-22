@@ -6,7 +6,14 @@ class Pesanan_model extends CI_Model
   public function getAllPesanan($type)
   {
     if ($type == 'all data') {
-      $this->db->select("*")->from('awal_pesanan');
+      //Today's date.
+      $currentDate = new DateTime();
+      //Subtract a day using DateInterval
+      $lastWeekDT = $currentDate->sub(new DateInterval('P1W'));
+      //Get the date in a YYYY-MM-DD format.
+      $lastWeek = $lastWeekDT->format('Y-m-d');
+
+      $this->db->select("*")->from('awal_pesanan')->where(['date_created' => $lastWeek]);
       $this->db->order_by('date_created', 'DESC');
       return $this->db->get()->result_array();
     }
