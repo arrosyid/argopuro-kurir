@@ -69,7 +69,7 @@
                                     endif; ?>
                 </div>
                 <div class="col-6">
-                  <a href="<?= base_url('kurir/delete_resi/' . $r['id_pesanan']) ?>" class="btn btn-danger ml-1 float-right">Hapus</a>
+                  <a href="#" data-url="<?= base_url('kurir/delete_resi/' . $r['id_pesanan']) ?>" class="btn btn-danger ml-1 float-right">Hapus</a>
                   <a href="<?= base_url('kurir/edit_resi/' . $r['id_pesanan']) ?>" class="btn btn-warning ml-1 float-right">Edit</a>
                   <a href="<?= base_url('kurir/struck/' . $r['id_pesanan']) ?>" class="btn btn-primary ml-1 float-right">Detail</a>
                 </div>
