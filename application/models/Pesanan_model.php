@@ -13,8 +13,7 @@ class Pesanan_model extends CI_Model
       //Get the date in a YYYY-MM-DD format.
       $lastWeek = $lastWeekDT->format('Y-m-d');
 
-      $this->db->select("*")->from('awal_pesanan')->where(['date_created' => $lastWeek]);
-      $this->db->order_by('date_created', 'DESC');
+      $this->db->get_compiled_select('awal_pesanan')->where(['date_created >=' => strtotime($lastWeek)])->order_by('date_created', 'DESC');
       return $this->db->get()->result_array();
     }
     if ($type == 'pending') {
