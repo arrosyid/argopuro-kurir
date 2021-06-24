@@ -321,9 +321,15 @@ class Kurir extends CI_Controller
       else
         $data['simpanDataPengirim'] = $this->session->userdata();
 
-      $this->load->view('templates/blog_header');
+      $data['title'] = 'Dashboard';
+      $data['subtitle'] = 'Tambah Pengiriman Barang';
+      $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
+      $data['resi'] = $this->Pesanan_model->getAllPesanan('pending');
+
+      $this->load->view('templates/admin_header', $data);
+      $this->load->view('templates/sidebar', $data);
       $this->load->view('blog/form_customer', $data);
-      $this->load->view('templates/blog_footer');
+      $this->load->view('templates/admin_footer');
     } else {
 
       $data_pengirim = [
