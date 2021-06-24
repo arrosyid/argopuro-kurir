@@ -36,6 +36,14 @@
               </a>
             </li>
           </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?= $user['level'] == 1 ? base_url('admin/tambahPesanan') : base_url('kurir/tambahPesanan') ?>" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tambah Pengiriman</p>
+              </a>
+            </li>
+          </ul>
           <!-- <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="#" class="nav-link">
