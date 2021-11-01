@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Libraries
  * @category	Pagination
  * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/libraries/pagination.html
+ * @link		https://codeigniter.com/userguide3/libraries/pagination.html
  */
 class CI_Pagination {
 
@@ -686,7 +686,7 @@ class CI_Pagination {
 	/**
 	 * Add "rel" attribute
 	 *
-	 * @link	http://www.w3.org/TR/html5/links.html#linkTypes
+	 * @link	https://www.w3.org/TR/html5/links.html#linkTypes
 	 * @param	string	$type
 	 * @return	string
 	 */

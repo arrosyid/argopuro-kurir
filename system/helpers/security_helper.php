@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Helpers
  * @category	Helpers
  * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/helpers/security_helper.html
+ * @link		https://codeigniter.com/userguide3/helpers/security_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -77,30 +77,6 @@ if ( ! function_exists('sanitize_filename'))
 	function sanitize_filename($filename)
 	{
 		return get_instance()->security->sanitize_filename($filename);
-	}
-}
-
-// --------------------------------------------------------------------
-
-if ( ! function_exists('do_hash'))
-{
-	/**
-	 * Hash encode a string
-	 *
-	 * @todo	Remove in version 3.1+.
-	 * @deprecated	3.0.0	Use PHP's native hash() instead.
-	 * @param	string	$str
-	 * @param	string	$type = 'sha1'
-	 * @return	string
-	 */
-	function do_hash($str, $type = 'sha1')
-	{
-		if ( ! in_array(strtolower($type), hash_algos()))
-		{
-			$type = 'md5';
-		}
-
-		return hash($type, $str);
 	}
 }
 

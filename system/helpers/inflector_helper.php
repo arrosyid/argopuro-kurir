@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Helpers
  * @category	Helpers
  * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/helpers/inflector_helper.html
+ * @link		https://codeigniter.com/userguide3/helpers/inflector_helper.html
  */
 
 // --------------------------------------------------------------------
@@ -283,5 +283,44 @@ if ( ! function_exists('is_countable'))
 	{
 		trigger_error('is_countable() is a native PHP function since version 7.3.0; use word_is_countable() instead', E_USER_WARNING);
 		return word_is_countable($word);
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('ordinal_format'))
+{
+	/**
+	 * Returns the English ordinal numeral for a given number
+	 *
+	 * @param  int    $number
+	 * @return string
+	 */
+	function ordinal_format($number)
+	{
+		if ( ! ctype_digit((string) $number) OR $number < 1)
+		{
+			return $number;
+		}
+
+		$last_digit = array(
+			0 => 'th',
+			1 => 'st',
+			2 => 'nd',
+			3 => 'rd',
+			4 => 'th',
+			5 => 'th',
+			6 => 'th',
+			7 => 'th',
+			8 => 'th',
+			9 => 'th'
+		);
+
+		if (($number % 100) >= 11 && ($number % 100) <= 13)
+		{
+			return $number.'th';
+		}
+
+		return $number.$last_digit[$number % 10];
 	}
 }

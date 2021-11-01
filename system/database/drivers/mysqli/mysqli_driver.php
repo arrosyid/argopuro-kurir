@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Drivers
  * @category	Database
  * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/database/
+ * @link		https://codeigniter.com/userguide3/database/
  */
 class CI_DB_mysqli_driver extends CI_DB {
 
@@ -215,6 +215,13 @@ class CI_DB_mysqli_driver extends CI_DB {
 				return ($this->db_debug) ? $this->display_error($message, '', TRUE) : FALSE;
 			}
 
+			if ( ! $this->_mysqli->set_charset($this->char_set))
+			{
+				log_message('error', "Database: Unable to set the configured connection charset ('{$this->char_set}').");
+				$this->_mysqli->close();
+				return ($this->db->db_debug) ? $this->display_error('db_unable_to_set_charset', $this->char_set) : FALSE;
+			}
+
 			return $this->_mysqli;
 		}
 
@@ -262,19 +269,6 @@ class CI_DB_mysqli_driver extends CI_DB {
 		}
 
 		return FALSE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set client character set
-	 *
-	 * @param	string	$charset
-	 * @return	bool
-	 */
-	protected function _db_set_charset($charset)
-	{
-		return $this->conn_id->set_charset($charset);
 	}
 
 	// --------------------------------------------------------------------
