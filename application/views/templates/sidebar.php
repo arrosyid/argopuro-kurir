@@ -84,7 +84,7 @@
         </li>
         <li class="nav-header">Setting</li>
         <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
+          <a href="<?= base_url('kurir/profile') ?>" class="nav-link <?= $title == 'Profile' || $title == 'Edit Profile' ? 'active' : '' ?>">
             <i class="nav-icon fas fa-id-card-alt"></i>
             <p>My Profile</p>
           </a>

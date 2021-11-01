@@ -386,6 +386,86 @@ class Kurir extends CI_Controller
     }
   }
 
+  public function profile()
+  {
+    $data['title'] = 'Profile';
+    $data['subtitle'] = 'Profile Anda';
+    $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
+
+    $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|matches[password2]', [
+      'min_length' => 'password terlalu pendek!',
+      'matches' => 'password tidak sama!'
+    ]);
+    $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+
+    if ($this->form_validation->run() == false) {
+      $this->load->view('templates/admin_header', $data);
+      $this->load->view('templates/sidebar', $data);
+      $this->load->view('admin/profile');
+      $this->load->view('templates/admin_footer', $data);
+    } else {
+      $data_password = [
+        'password' => password_hash(
+          htmlspecialchars($this->input->post('password1', true)),
+          PASSWORD_DEFAULT
+        )
+      ];
+      // var_dump($data_password);
+      // die;
+      if ($this->User_model->updateUserById($data_password, $data['user']['id_user'])) {
+        $this->session->set_flashdata(
+          'message',
+          '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Berhasil Mengubah Password atau Kata Sandi Anda</div>'
+        );
+        redirect('kurir/profile');
+      } else {
+        $this->session->set_flashdata(
+          'message',
+          '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Gagal Mengubah Password atau Kata Sandi Anda</div>'
+        );
+        redirect('kurir/profile');
+      }
+    }
+  }
+  public function editProfile()
+  {
+    $data['title'] = 'Edit Profile';
+    $data['subtitle'] = 'Edit Profile Anda';
+    $data['user'] = $this->User_model->getUserByEmail($this->session->userdata['email']);
+
+    $this->form_validation->set_rules('username', 'Username', 'required|trim');
+
+    if ($this->form_validation->run() == false) {
+      $this->load->view('templates/admin_header', $data);
+      $this->load->view('templates/sidebar', $data);
+      $this->load->view('admin/edit_profile');
+      $this->load->view('templates/admin_footer', $data);
+    } else {
+      $data_akun = [
+        'username' => htmlspecialchars($this->input->post('username', true)),
+      ];
+      // var_dump($data_akun);
+      // die;
+      if ($this->User_model->updateUserById($data_akun, $data['user']['id_user'])) {
+        $this->session->set_flashdata(
+          'message',
+          '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Berhasil Mengubah Data Akun Anda</div>'
+        );
+        redirect('kurir/profile');
+      } else {
+        $this->session->set_flashdata(
+          'message',
+          '<div class="alert alert-danger alert-dismissible"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Gagal Mengubah Data Akun Anda</div>'
+        );
+        redirect('kurir/profile');
+      }
+    }
+  }
+
   public function ajax()
   {
     // $ajax_menu = $this->input->get('search');
