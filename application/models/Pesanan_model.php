@@ -16,7 +16,10 @@ class Pesanan_model extends CI_Model
       // // $this->db->get_compiled_select('awal_pesanan')->where(['date_created >=' => strtotime($lastWeek)])->order_by('date_created', 'DESC');
       // $this->db->select("*")->from('awal_pesanan')->where(['date_created >=' => strtotime($lastWeek)])->order_by('date_created', 'DESC');
       // return $this->db->get()->result_array();
-      return $this->db->get('awal_pesanan')->result_array();
+      $this->db->select("*")
+        ->from('awal_pesanan')
+        ->order_by('date_created', 'DESC')->limit(1000);
+      return $this->db->get()->result_array();
     }
     if ($type == 'pending') {
       $this->db->select("*")->from('awal_pesanan')->where('status = 1');

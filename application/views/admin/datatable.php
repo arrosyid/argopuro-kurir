@@ -10,7 +10,7 @@
         <a href="<?= base_url('kurir/tambahPesanan') ?>" class="mb-5 btn btn-primary">Tambah Pengiriman Paket</a>
         <?= $this->session->flashdata('message'); ?>
         <?= $this->session->flashdata('message1'); ?>
-        <table id="Tables" class="table table-bordered table-striped">
+        <table id="Tables" class="table table-bordered table-striped" style="width: 100%;">
           <thead>
             <tr>
               <th>No</th>
@@ -25,6 +25,7 @@
               <th>Berat barang</th>
               <th>Onkir</th>
               <th>Jenis Antar</th>
+              <th>Rekening Talangan</th>
               <th>Tanggal Dibuat</th>
               <th>Action</th>
             </tr>
@@ -45,6 +46,7 @@
                 <td><?= $R['berat_barang'] ?> KG</td>
                 <td><?= $R['ongkir'] ?></td>
                 <td><?= $R['jenis_antar'] == 'E' ? 'Ekspedisi' : '' ?></td>
+                <td><?= $R['no_rek'] == null ? '-' : $R['bank'] . ', ' . $R['no_rek'] . ', ' . $R['atas_nama'] ?></td>
                 <td><?= date('d-m-Y', $R['date_created']) ?></td>
                 <td>
                   <!-- <a href="#" data-url="<?= base_url('kurir/delete_resi/' . $R['id_pesanan']) ?>" class="btn btn-danger">Hapus</a> -->
@@ -69,6 +71,7 @@
               <th>Berat barang</th>
               <th>Onkir</th>
               <th>Jenis Antar</th>
+              <th>Rekening Talangan</th>
               <th>Tanggal Dibuat</th>
               <th>Action</th>
             </tr>

@@ -101,7 +101,7 @@
 </script> -->
 
 <script>
-  $(function() {
+  $(document).ready(function() {
     $('#Tables').DataTable({
       "paging": true,
       "lengthChange": true,
