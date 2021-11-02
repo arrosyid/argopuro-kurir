@@ -29,6 +29,8 @@
             <h3 class="card-title"><i class="fas fa-user mr-1"></i>Profil</h3>
           </div>
           <div class="card-body">
+            <?= form_error('password1', '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> ', '</div>'); ?>
+            <?= form_error('password2', '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> ', '</div>'); ?>
             <div class="row">
               <div class="col-sm-3">
                 <h6 class="mb-0">Username</h6>
