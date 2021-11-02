@@ -29,7 +29,7 @@ class Kurir extends CI_Controller
 
     $this->load->view('templates/admin_header', $data);
     $this->load->view('templates/sidebar', $data);
-    $this->load->view('admin/dashboard');
+    $this->load->view('admin/datatable');
     $this->load->view('templates/admin_footer');
   }
 

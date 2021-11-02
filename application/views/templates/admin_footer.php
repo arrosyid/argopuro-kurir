@@ -10,11 +10,6 @@
     <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
   </div>
 </footer>
-<!-- Control Sidebar -->
-<!-- <aside class="control-sidebar control-sidebar-dark"> -->
-<!-- Control sidebar content goes here -->
-<!-- </aside> -->
-<!-- /.control-sidebar -->
 </div>
 <!-- /.wraper -->
 
@@ -34,10 +29,6 @@
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<!-- <script src="<?= base_url() ?>assets/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="<?= base_url() ?>assets/plugins/raphael/raphael.min.js"></script>
-<script src="<?= base_url() ?>assets/plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="<?= base_url() ?>assets/plugins/jquery-mapael/maps/usa_states.min.js"></script> -->
 <!-- ChartJS -->
 <!-- <script src="<?= base_url() ?>assets/plugins/chart.js/Chart.min.js"></script> -->
 <!-- DataTables -->
@@ -45,6 +36,15 @@
 <script src="<?= base_url() ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+<script src="<?= base_url() ?>assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/jszip/jszip.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- overlayScrollbar -->
 <script>
   // $(function() {
@@ -104,12 +104,19 @@
   $(function() {
     $('#Tables').DataTable({
       "paging": true,
-      "lengthChange": false,
-      "searching": false,
+      "lengthChange": true,
+      "searching": true,
       "ordering": true,
       "info": true,
-      "autoWidth": false,
+      "autoWidth": true,
       "responsive": true,
+      "dom": 'Bfrtip',
+      buttons: [{
+        className: 'btn-success btn-round btn-sm mr-2',
+        extend: 'excelHtml5',
+        text: 'Cetak (Excel) <i class="fa fa-file-excel-o"></i>',
+        title: 'Data Pesanan'
+      }],
     });
   });
 </script>

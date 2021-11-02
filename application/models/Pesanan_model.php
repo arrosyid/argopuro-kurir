@@ -6,16 +6,17 @@ class Pesanan_model extends CI_Model
   public function getAllPesanan($type)
   {
     if ($type == 'all data') {
-      //Today's date.
-      $currentDate = new DateTime();
-      //Subtract a day using DateInterval
-      $lastWeekDT = $currentDate->sub(new DateInterval('P1W'));
-      //Get the date in a YYYY-MM-DD format.
-      $lastWeek = $lastWeekDT->format('Y-m-d');
+      // //Today's date.
+      // $currentDate = new DateTime();
+      // //Subtract a day using DateInterval
+      // $lastWeekDT = $currentDate->sub(new DateInterval('P1W'));
+      // //Get the date in a YYYY-MM-DD format.
+      // $lastWeek = $lastWeekDT->format('Y-m-d');
 
-      // $this->db->get_compiled_select('awal_pesanan')->where(['date_created >=' => strtotime($lastWeek)])->order_by('date_created', 'DESC');
-      $this->db->select("*")->from('awal_pesanan')->where(['date_created >=' => strtotime($lastWeek)])->order_by('date_created', 'DESC');
-      return $this->db->get()->result_array();
+      // // $this->db->get_compiled_select('awal_pesanan')->where(['date_created >=' => strtotime($lastWeek)])->order_by('date_created', 'DESC');
+      // $this->db->select("*")->from('awal_pesanan')->where(['date_created >=' => strtotime($lastWeek)])->order_by('date_created', 'DESC');
+      // return $this->db->get()->result_array();
+      return $this->db->get('awal_pesanan')->result_array();
     }
     if ($type == 'pending') {
       $this->db->select("*")->from('awal_pesanan')->where('status = 1');
